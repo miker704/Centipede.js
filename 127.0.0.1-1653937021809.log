@@ -1,0 +1,32 @@
+this log file was generated to find out certain math
+about the games canvas to calulate bounds 
+for objects to spawn and the zapper to move
+
+
+index.js?b635:10 Hello World
+game.js?cdc0:68 game x 500     - >max width of canvas
+game.js?cdc0:69 game y 750  -> max hheight of canvas
+
+
+
+game.js?cdc0:70 game xSpace 602 --> window width minus canvas width
+game.js?cdc0:71 game ySpace 1311 -> window height minus canvas heigth
+game.js?cdc0:50 xDim 600   - > width dimesions
+game.js?cdc0:51 yDim 756 -> height dimesions
+game.js?cdc0:52 xstart 0 -> start of canvas also start of score table
+game.js?cdc0:53 ystar 36 -> score table height
+game.js?cdc0:54 xend 600 width dimesions the end point
+game.js?cdc0:55 yend 756 height dimesions the end point
+game.js?cdc0:56 24 -> default size for an object to take part of the screen
+with a proper ratio to the canvas
+game.js?cdc0:57 24
+
+
+twoThirds =((Game.DIMY - 0 || scoretable height(36))*2/3)+ 0 ||(36)
+sqaurePos = twoThirds - ((twothirds%24)
+topLimit =  squarePos + (24/2); -> player Area
+
+
+
+
+
