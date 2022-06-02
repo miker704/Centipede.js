@@ -1,3 +1,4 @@
+
 import Util from "./utils.js";
 import MovingObject from "./movingObject.js";
 import Bullet from "./bullet.js";
@@ -6,6 +7,7 @@ import Spider from "./spider.js";
 import Centipede from "./centipede.js";
 import Flea from "./flea.js";
 import ZapperFire from "./zapperFire.js";
+import Scorpion from "./scorpion.js";
 // the player is the bugzapper that can be controlled
 //player can move the zapper range of up to 30% of the bottom
 //screen 
@@ -13,22 +15,7 @@ import ZapperFire from "./zapperFire.js";
 class BugZapper extends MovingObject {
 
     constructor (options) {
-        // this.pos = options[pos];
-        // this.pos = [250,572];
-        // this.pos = options.pos;
-        // this.pos = [];
-        // this.radius = BugZapper.RADIUS;
-        // this.vel = [0, 0];
-        // this.game = options.game;
-        // this.color = Util.randomColors();
-        // super({
-        //     pos: [250,572],
-        //     radius:BugZapper.RADIUS,
-        //     vel: [0,0],
-        //     color: Util.randomColors(),
-        //     game: options.game
-        // });
-
+        
 
         super({
             pos: options.pos,
@@ -46,18 +33,6 @@ class BugZapper extends MovingObject {
             bugZapper: this
         });
 
-
-
-
-
-        //  MovingObject.call(this, {
-        //      pos: [250,572],
-        //      radius:BugZapper.RADIUS,
-        //      vel: [0,0],
-        //      color: Util.randomColors(),
-        //      game: options.game
-        //  });
-
     }
 
     fireZap () {
@@ -70,7 +45,7 @@ class BugZapper extends MovingObject {
     }
 
     // undecided on what the bugzapper will be triangle delta arrow
-    drawBugZapper (ctx) {
+    draw (ctx) {
         let tempRadius = (this.radius / 3) * 5;
         let x = 20;
         let y = 20;
@@ -113,8 +88,8 @@ class BugZapper extends MovingObject {
     power (impulse) {
         this.vel[0] += impulse[0];
         this.vel[1] += impulse[1];
-        console.table(this.vel);
-        for (let i = 0; i < 4; i++) {
+        // console.table(this.vel);
+        for (let i = 0; i < 2; i++) {
             if (this.vel[i] > BugZapper.MAX_SPEED) {
                 this.vel[i] = BugZapper.MAX_SPEED;
             }
@@ -127,14 +102,14 @@ class BugZapper extends MovingObject {
     }
 
     slowZapper (distance) {
-        distance = distance || 0.04;
-        for (let i = 0; i < 4; i++) {
+        distance = distance || 0.02;
+        for (let i = 0; i < 2; i++) {
             //check if velocity reached a negative number
             if (Math.abs(this.vel[i]) < distance) {
                 this.vel[i] = 0;
             }
             else {
-                this.vel[i] *= distance - 1;
+                this.vel[i] *= 1 - distance;
             }
         }
     }
@@ -160,8 +135,8 @@ class BugZapper extends MovingObject {
         let topLimit= playPos + (24/2); // -> thhis will be use as the playerarea
         let testRange = 36;
 
-        console.log("in bugzappper move");
-        console.log(Game.DIM_X);
+        // console.log("in bugzappper move");
+        // console.log(Game.DIM_X);
 
         if (this.pos[0] + this.radius > Game.DIM_X) {
             this.pos[0] = Game.DIM_X - this.radius;
@@ -195,28 +170,19 @@ class BugZapper extends MovingObject {
     // object of enemy type the player loses a life
     // if they collide with a mushroom they cannot move throw
     //it
-    // collisonDetection (entity) {
+    collisonDetection (entity) {
 
-    //     if ((entity instanceof Spider || entity instanceof Centipede ||
-    //         entity instanceof Flea || entity instanceof Scorpion)) {
-    //         this.game.lives--;
+        if ((entity instanceof Spider || entity instanceof Centipede ||
+            entity instanceof Flea || entity instanceof Scorpion)) {
+            this.game.lives--;
 
-                
+        }
 
-
-    //     }
-
-
-    // }
+    }
 
 }
-BugZapper.RADIUS = 15;
+BugZapper.RADIUS = 12;
 BugZapper.MAX_SPEED = 9;
-
-//  Util.inherits(BugZapper, MovingObject);
-
-
-
 
 
 export default BugZapper;

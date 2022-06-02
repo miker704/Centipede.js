@@ -12,13 +12,13 @@ class ZapperFire {
     }
 
     fireZapper(){
-        let zapPositon = [this.bugZapper.pos[0],this.bugZapper.pos[1]-this.bugZapper.radius/4];
+        let zapPositon = [this.bugZapper.pos[0],this.bugZapper.pos[1]-this.bugZapper.radius/8];
         let zapAngle = (Math.PI - 0.1 *(this.number-1))/2;
 
         for(let i=0; i<this.number;i++){
             let zapX = this.speed* Math.cos(zapAngle);
             let zapY = (-this.speed) * Math.sin(zapAngle);
-            zapAngle+=0.12;
+            zapAngle+=0.1;
             this.game.allBullets.push(new Bullet({
                 game: this.game,
                 pos: zapPositon,
