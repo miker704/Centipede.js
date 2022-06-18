@@ -28,12 +28,12 @@ class Bullet extends MovingObject {
     //check if the bullet collides with some destroyable entity
     collisonDetection(entity) {
 
-        if (entity instanceof Spider ||
-            entity instanceof Mushrooms ||
+        if (entity instanceof Mushrooms ||
+            entity instanceof Spider ||
             entity instanceof Centipede ||
             entity instanceof Scorpion ||
             entity instanceof Flea) {
-
+       
             entity.hitByZapper(); // call to remove entity
             this.game.removeEntity(this); // remove the bullet from the game 
         }

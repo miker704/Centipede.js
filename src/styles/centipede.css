@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+  }
+  
+  .instructions {
+  
+    width: 410px;
+  
+  }
+  
+  .instructions ul {
+    list-style-type: decimal;
+  }
+  
+ 
+  
+  .game-screen h1 {
+    text-align: center;
+  }
+  
+  canvas {
+    
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: none; 
+  }
+  

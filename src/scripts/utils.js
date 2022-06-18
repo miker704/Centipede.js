@@ -79,7 +79,7 @@ const Util = {
     //location functions to add a proper locations for objects to snap to the grid more properly
     centipedeNearestPos(pos){
         let randPos = [];
-        for (let i = 0; i < pos.length; i++) {
+        for (let i = 0; i <2; i++) {
             let offset = i === 0 ? 0 : 36;
             let point = pos[i] - offset;
             let difference = (point - 12) % 24;

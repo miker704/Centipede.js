@@ -16,15 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const ctx = canvas.getContext('2d');
 
-	const game = new Game();
-	game.draw(ctx);
+	let game = new Game();
+	// game.draw(ctx);
 
 	new GameView(game,ctx).start();
 
 
 
 });
-
-
-
-

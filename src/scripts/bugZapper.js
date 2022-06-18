@@ -182,7 +182,7 @@ class BugZapper extends MovingObject {
 
 }
 BugZapper.RADIUS = 12;
-BugZapper.MAX_SPEED = 9;
+BugZapper.MAX_SPEED = 10;
 
 
 export default BugZapper;

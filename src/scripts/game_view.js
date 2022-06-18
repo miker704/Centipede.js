@@ -27,38 +27,31 @@ class GameView {
 
     }
 
-    bindKeyHandlers() {
+    // bindKeyHandlers() {
 
-    }
+    // }
 
     listenToKeyboardNMouseEvents() {
 
         const that = this;
         document.addEventListener("keydown", this.keyDownHandler.bind(this));
         document.addEventListener("keyup", this.keyUpHandler.bind(this));
-        // document.addEventListener("mousemove", this.mouseMoveHandler.bind(this));
-        // document.addEventListener("mousedown", this.mouseDownHandler.bind(this));
-        // document.addEventListener("mouseup", this.mouseUpHandler.bind(this));
         const gameCanvas = document.getElementById("game-canvas");
-
         gameCanvas.addEventListener("mousemove", this.mouseMoveHandler.bind(this));
         gameCanvas.addEventListener("mousedown", this.mouseDownHandler.bind(this));
         gameCanvas.addEventListener("mouseup", this.mouseUpHandler.bind(this));
-
-
-
+        // gameCanvas.addEventListener("click", this.handleClick.bind(this));
 
     }
 
 
-    handleClick(){
+    handleClick(e){
         if (!this.game.lives) {
             that.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
             that.game.reset();
         }
         else {
             this.game.zapper.zapperBarrell.startFiringZapper();
-            // console.log("fired zapper");
         }
     }
 
@@ -67,24 +60,61 @@ class GameView {
             return;
         }
 
-        // let mousePositon = [e.clientX - 510, e.clientY - 60];
+        //  let mousePosition = [e.clientX-4 , e.clientY - 100];
+        // let mousePosition = [e.clientX - 100, e.clientY - 4];
+        // let mousePositon = [e.clientX, e.clientY];
+        // this.game.zapper.pos[0] = e.clientX;
+        // this.game.zapper.pos[1] = e.clientY;
+        // this.game.zapper.pos[0] -=gameCanvas.offSetLeft;
+        // this.game.zapper.pos[1] -= gameCanvas.offSetTop;
+        // let mousePosition = [e.clientX, e.clientY];
+        // pos: [300, 36 + ((Game.DIM_Y-36)*3/4) ],
+        let canvas = document.getElementById("game-canvas");
+        // var relativeX = e.clientX - canvas.offsetLeft;
+        // if(relativeX > 0 && relativeX < canvas.width) {
+        //   this.game.zapper.pos[0] = relativeX;
+        // }
+        let x=e.clientX;
+        let y=e.clientY;
+        
+        x-=canvas.offsetLeft;
+        y-=canvas.offsetTop;
      
-        let mousePositon = [e.clientX, e.clientY];
+        let mousePosition = [e.clientX, e.clientY];
 
+        // console.log("mouse pos: "+ e.clientX + " " + e.clientY );       
+        // console.log("zapper pos: "+ this.game.zapper.pos[0]+ " "+this.game.zapper.pos[1]);
 
         let collison = this.game.AllMushrooms.some(
-            (mushroom) => {
+           (mushroom)=>{
                 return mushroom.hasCollisonOccured({
-                    pos: mousePositon,
+                    // pos: mousePosition,
+                    pos: [x,y],
+
                     radius: this.game.zapper.radius
                 });
             }
         );
 
         if (!collison) {
-            this.game.zapper.pos = mousePositon;
+            this.game.zapper.pos = [x,y];
         }
+      
     }
+
+
+    // mouseMoveHandler2(e){
+    //     window.addEventListener('mousemove', function (e) {
+    //         myGameArea.x = e.pageX;
+    //         gameCanvas.y = e.pageY;
+    //     })
+    // }
+
+    updateGameArea(){
+
+    }
+
+
 
     mouseDownHandler(e) {
         if (!this.game.lives) {
@@ -109,7 +139,7 @@ class GameView {
         switch (e.which) {
 
 
-            case 33: // enter - > fire
+            case 13: // enter - > fire
 
             //check if the game is over player cannot fire zapper
             if (!this.game.lives) {
@@ -199,33 +229,10 @@ class GameView {
         }
 
     }
-    // 
-    //  keyDownHandler(e) {
-    //     if(e.key == "Right" || e.key == "ArrowRight") {
-    //         rightPressed = true;
-    //         console.log(this.game.zapper.pos);
-    //          this.game.zapper.power([1,0]);
-    //         console.log("move right")
-    //     }
-    //     else if(e.key == "Left" || e.key == "ArrowLeft") {
-    //         // leftPressed = true;
-    //         // this.game.playerBugZapper[0].power([-1, 0]);
-    //         console.log(this.game.zapper.pos);
-    //          this.game.zapper.power([-1,0]);
-    //         console.log("move left")
-    //     }
+    
+    
 
-
-    // }
-
-    //  keyUpHandler(e) {
-    //     if(e.key == "Right" || e.key == "ArrowRight") {
-    //         rightPressed = false;
-    //     }
-    //     else if(e.key == "Left" || e.key == "ArrowLeft") {
-    //         leftPressed = false;
-    //     }
-    // }
+    
 
     keyUpHandler(e) {
         // console.log("keyUpHandler is being accessed");

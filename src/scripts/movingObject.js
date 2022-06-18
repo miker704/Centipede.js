@@ -17,15 +17,17 @@ class MovingObject {
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.stroke();
+        // console.log("centipede being redrawn");
     }
 
     move () {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
         // console.table(this.pos);
-        this.gravityForce && this.gravity();
+        // this.gravityForce && this.gravity();
         // add outofbounds and remove function
         if(this.game.outOfBounds(this.pos)){
+            // console.log("object has been removed: " + this.pos[0] + " "+ this.pos[1]);
             this.game.removeEntity(this);
         }
 
