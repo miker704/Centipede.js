@@ -42,13 +42,21 @@ class GameView {
         gameCanvas.addEventListener("mouseup", this.mouseUpHandler.bind(this));
         // gameCanvas.addEventListener("click", this.handleClick.bind(this));
 
+
+        
+
+
+
+
     }
 
 
     handleClick(e){
         if (!this.game.lives) {
-            that.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
-            that.game.reset();
+            this.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
+            console.log(this.game.startGame)
+            this.game.reset();
+            console.log(this.game.startGame)
         }
         else {
             this.game.zapper.zapperBarrell.startFiringZapper();
@@ -117,6 +125,9 @@ class GameView {
 
 
     mouseDownHandler(e) {
+
+        e.preventDefault();
+
         if (!this.game.lives) {
             this.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
             this.game.reset();
@@ -143,8 +154,8 @@ class GameView {
 
             //check if the game is over player cannot fire zapper
             if (!this.game.lives) {
-                that.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
-                that.game.reset();
+                this.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
+                this.game.reset();
             }
             else {
                 this.game.zapper.zapperBarrell.startFiringZapper();
@@ -156,8 +167,8 @@ class GameView {
 
                 //check if the game is over player cannot fire zapper
                 if (!this.game.lives) {
-                    that.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
-                    that.game.reset();
+                    this.game.zapper && this.game.zapper.zapperBarrell.stopFiringZapper();
+                    this.game.reset();
                 }
                 else {
                     this.game.zapper.zapperBarrell.startFiringZapper();

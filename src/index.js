@@ -1,4 +1,4 @@
-import Mushrooms from "./scripts/mushrooms.js";
+
 import Game from "./scripts/game.js";
 import GameView from "./scripts/game_view.js";
 

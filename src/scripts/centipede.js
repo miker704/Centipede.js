@@ -295,7 +295,12 @@ class Centipede extends MovingObject {
 
 
   hitByZapper() {
-    console.log("hit by zapper");
+    // console.log("hit by zapper");
+    // console.log("centipede length: ");
+    // console.log(this.game.allCentipedes.length);
+    // console.log("centipede body length: ");
+    // console.log(this.game.bodyLength);
+
 
     this.game.removeEntity(this);
     this.game.incrementScore(100);

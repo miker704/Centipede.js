@@ -12,7 +12,7 @@ import Util from "./utils.js";
 
 class Game {
 
-    constructor () {
+    constructor() {
         // this.splitGameCanvas();
         this.AllMushrooms = [];
         this.level = 1;
@@ -33,9 +33,9 @@ class Game {
         this.allScorpions = [];
         this.allBullets = [];
         this.gameEntities = [];
+        this.nextLife = 10000;
         //centipede has a random body size between  10 -12 segments long
         this.bodyLength = Math.floor(Math.random() * (12 - 10 + 1)) + 10;
-        // this.bodyLength = 1;
 
         // this.addStartingShrooms();
         // this.addSpider();
@@ -46,7 +46,6 @@ class Game {
         });
         // this.addStartingShrooms();
         // this.zapper;
-
 
 
     }
@@ -60,7 +59,7 @@ class Game {
     // game area - which has two sections forest and player area
     // player area is where the player can move through
 
-    splitGameCanvas () {
+    splitGameCanvas() {
 
         // this.scoreTable_DIMX= Game.DIM_X;
         // this.scoreTable_DIMY - ;
@@ -104,7 +103,7 @@ class Game {
     //Begining of Level Rendering Functions
 
 
-    reset () {
+    reset() {
         this.startGame = true;
         this.AllMushrooms = [];
         this.level = 1;
@@ -117,16 +116,19 @@ class Game {
         this.allScorpions = [];
         this.allBullets = [];
         this.gameEntities = [];
+        this.nextLife = 10000;
         this.zapper = new BugZapper({
             pos: [300, 36 + ((Game.DIM_Y - 36) * 3 / 4)],
             game: this,
         });
-        this.addStartingShrooms();
-        this.addSpider();
+        // this.addStartingShrooms();
+        // this.addSpider();
+        console.log("reset Call : ")
+
     }
 
 
-    addStartingShrooms () {
+    addStartingShrooms() {
         let randMushroomSpawnPoints = Util.randomMushroomPos();
         for (let i = 0; i < randMushroomSpawnPoints.length; i++) {
 
@@ -142,7 +144,7 @@ class Game {
         }
     }
 
-    addMushroomHere (options) {
+    addMushroomHere(options) {
         this.AllMushrooms.push(new Mushrooms({
             pos: options.pos,
             game: options.game,
@@ -153,12 +155,12 @@ class Game {
     // idk why maybe i need to bind with this function but hitting a mushroom 
     // doesnt damage it if its health is hard coded in its class
 
-    mushroomHealth () {
+    mushroomHealth() {
         return Math.min(Math.floor(2 + (this.level / 4)), 4);
     }
 
 
-    addBodySegments () {
+    addBodySegments() {
         this.allCentipedes.push(new Centipede({
             game: this,
             vel: [(5 + this.level * 0.5), 0]
@@ -166,7 +168,7 @@ class Game {
 
     }
 
-    bodyPartsEmpty () {
+    bodyPartsEmpty() {
         return this.allCentipedes.every(
             function (bodySegment) {
                 return bodySegment.pos[0] >= 3 * bodySegment.radius ||
@@ -174,7 +176,7 @@ class Game {
             }, this);
     }
 
-    createBodySegment () {
+    createBodySegment() {
         if (this.bodyLength && this.bodyPartsEmpty()) {
             this.bodyLength--;
             this.addBodySegments();
@@ -183,7 +185,7 @@ class Game {
 
 
 
-    addSpider () {
+    addSpider() {
         for (let i = 0; i < 6; i++) {
             let x = Math.random() > 0.5 ? 0 : Game.DIM_X;
             let y = Math.random() * ((Game.DIM_Y - 36) / 2);
@@ -206,7 +208,7 @@ class Game {
 
     }
 
-    draw (ctx) {
+    draw(ctx) {
 
 
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
@@ -230,8 +232,11 @@ class Game {
             this.allEntitiesDraw().forEach(
                 (entity) => {
                     entity.draw(ctx);
+
                 });
+            //render head and body parts 
             this.drawCentipede(ctx);
+
         }
         else if (!this.startGame) {
             ctx.fillStyle = "#FFFFFF";
@@ -254,28 +259,45 @@ class Game {
                 (Game.DIM_X) / 2,
                 (Game.DIM_Y - 36) * 0.55 + 36
             );
+
+
         }
 
 
     }
 
-    randomPosition () {
+    randomPosition() {
 
         return [Math.floor(Math.random() * 400), Math.floor(Math.random() * 400)];
     };
     // shows lives, score and level 
-    incrementScore (score) {
+    incrementScore(score) {
         if (this.lives > 0) {
             this.score += score;
 
         }
+    }
+
+
+    addLife() {
+
+        // give the player a new life after reaching a certain score
+
+        if (this.score !== 0 && this.lives > 0) {
+
+            if (this.score>= this.nextLife) {
+                this.nextLife+=10000;
+                this.lives++;
+            }
+        }
 
     }
+
 
     // these are to add entities in the middle of play that spawn by game actions
     // such as breaking a centipede, mushroom spawns from centipede destroyed/ scorpion
     // changing a mushroom to be poisoned or fleas arrive to spawn mushrooms
-    addEntities (entity) {
+    addEntities(entity) {
         if (entity instanceof Centipede) {
             this.allCentipedes.push(entity);
         }
@@ -288,7 +310,7 @@ class Game {
     }
 
 
-    moveStuff () {
+    moveStuff() {
         // this.zapper.move();
         // for (let i = 0; i < this.allBullets.length; i++) {
         //     this.allBullets[i].move();
@@ -314,7 +336,7 @@ class Game {
         //         entity.move();
         //     });
     }
-    allEntities () {
+    allEntities() {
         return this.gameEntities.concat(
             //   return   this.AllMushrooms.concat(
             this.AllMushrooms,
@@ -326,21 +348,21 @@ class Game {
             [this.zapper]
         );
     }
-    allEntitiesDraw () {
+    allEntitiesDraw() {
         return this.gameEntities.concat(
             //   return   this.AllMushrooms.concat(
             this.AllMushrooms,
             // this.allFleas,
             this.allBullets,
-            // this.allCentipedes,
-            this.allSpiders,
+            this.allCentipedes,
+            // this.allSpiders,
             // this.allScorpions,
             [this.zapper]
         );
     }
 
     // hasCollisonOccured 
-    checkCollisons () {
+    checkCollisons() {
 
 
         // let testSubjects = this.allEntities();
@@ -359,20 +381,24 @@ class Game {
 
 
 
-    gamefieldSetUp () {
+    gamefieldSetUp() {
         if (this.lives) {
             this.moveStuff();
             this.checkCollisons();
             this.zapper.slowZapper();
+            this.addLife();
             this.createBodySegment();
+
+            // console.log("this.centipede Length : " + this.allCentipedes.length);
             if (this.allCentipedes.length === 0) {
+
                 this.newLevel();
             }
 
         }
     }
 
-    drawCentipede (ctx) {
+    drawCentipede(ctx) {
         for (let i = 0; i < this.allCentipedes.length; i++) {
             if (i === 0) {
                 this.allCentipedes[0].drawHead(ctx);
@@ -387,13 +413,13 @@ class Game {
 
 
     // check if an object is out of bounds of the game canvas
-    outOfBounds (pos) {
+    outOfBounds(pos) {
         return pos[0] < 0 || pos[1] < 36 || pos[0] >= Game.DIM_X || pos[1] >= Game.DIM_Y;
     }
 
     //remove an entity if destroyed or game reset by splicing it from 
     // the games dedicated array for said entity
-    removeEntity (entity) {
+    removeEntity(entity) {
         if (entity instanceof Centipede) {
             this.allCentipedes.splice(this.allCentipedes.indexOf(entity), 1);
         }
@@ -420,17 +446,25 @@ class Game {
 
     }
 
-    newLevel () {
-        this.incrementScore(this.level * 15);
+    newLevel() {
+
+        //give a bonus to the score for each level survived
+
+        let newscore = 0;
+        newscore += Math.ceil(((this.level) * (this.score * 0.025)));
+     
+        this.incrementScore(newscore);
         this.level++;
-        this.bodyLength = Math.floor(Math.random() * (12 - 10 + 1)) + (10 + (this.level / 2));
-        console.log("this.bodyLength : "+this.bodyLength);
+        this.bodyLength = Math.ceil(Math.random() * (12 - 10 + 1)) + Math.ceil((10 + (this.level / 2)));
+
+
+
     }
 
 
     //check if the game if over
-    gameOver () {
-        return this.lives === 0 ? true : false;
+    gameOver() {
+        return this.lives <= 0 ? true : false;
     }
 
 
