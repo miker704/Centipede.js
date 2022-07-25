@@ -235,7 +235,22 @@ class Game {
     }
 
 
+    // addArmoredScorpion(){
 
+    //     let startPos = Util.randomScorpionPos();
+
+    //     this.allArmoredScorpions.push(
+            
+    //         new ArmoredScorpion({
+    //             pos: startPos,
+    //             direction: startPos[0] === 0 ? 0 : -Math.PI,
+
+    //             game: this,
+    //             maxVelocity:((this.level * 0.5) * 2)
+    //         })
+       
+    //     )
+    // }
 
 
     draw(ctx) {
