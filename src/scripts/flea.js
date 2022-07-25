@@ -25,7 +25,9 @@ class Flea extends MovingObject {
         
     }
 
+    hitByZapper(){
 
+    }
 
 
     draw(ctx) {
