@@ -211,21 +211,22 @@ class Game {
 
 
 
-    addFlea(){
-            this.allFleas.push(
-                new Flea({
+    addFlea() {
+        this.allFleas.push(
+            new Flea({
+                // pos: Util.randomFleaPos(),
 
-                    game:this
-                })
-            )
+                game: this
+            })
+        )
     }
 
 
-    addScorpion(){
+    addScorpion() {
         this.allScorpions.push(
             new Scorpion({
                 // pos: Util.randomScorpionPos(),
-                game:this
+                game: this
             })
         )
 
@@ -312,8 +313,8 @@ class Game {
 
         if (this.score !== 0 && this.lives > 0) {
 
-            if (this.score>= this.nextLife) {
-                this.nextLife+=10000;
+            if (this.score >= this.nextLife) {
+                this.nextLife += 10000;
                 this.lives++;
             }
         }
@@ -419,11 +420,11 @@ class Game {
             // console.log("this.centipede Length : " + this.allCentipedes.length);
             // if (this.allCentipedes.length === 0) {
 
-                // this.newLevel();
+            // this.newLevel();
             // }
 
         }
-        else{
+        else {
             // console.log("game over");
 
             // this.startGame= false;
@@ -433,7 +434,7 @@ class Game {
 
 
 
-            
+
         }
     }
 
@@ -491,7 +492,7 @@ class Game {
 
         let newscore = 0;
         newscore += Math.ceil(((this.level) * (this.score * 0.025)));
-     
+
         this.incrementScore(newscore);
         this.level++;
         this.bodyLength = Math.ceil(Math.random() * (12 - 10 + 1)) + Math.ceil((10 + (this.level / 2)));
@@ -503,7 +504,7 @@ class Game {
 
     //check if the game if over
     gameOver() {
-        return this.lives > 0 ? this.startGame = true : this.startGame=false;
+        return this.lives > 0 ? this.startGame = true : this.startGame = false;
     }
 
 
