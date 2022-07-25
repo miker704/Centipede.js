@@ -19,7 +19,10 @@ class Flea extends MovingObject {
 
     }
 
-
+     //fleas basically drop down from the top as they travel
+    //down they spawn mushrooms they spawn when around 1/5 of mushrooms
+    // are gone from the current level
+    // they take 2 hits to defeat
 
     move(){
         
