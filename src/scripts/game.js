@@ -39,7 +39,7 @@ class Game {
 
         // this.addStartingShrooms();
         // this.addSpider();
-        // // this.startGame = false;
+        this.startGame = false;
         this.zapper = new BugZapper({
             pos: [300, 36 + ((Game.DIM_Y - 36) * 3 / 4)],
             game: this,
@@ -121,7 +121,7 @@ class Game {
             pos: [300, 36 + ((Game.DIM_Y - 36) * 3 / 4)],
             game: this,
         });
-        // this.addStartingShrooms();
+        this.addStartingShrooms();
         // this.addSpider();
         console.log("reset Call : ")
 
@@ -208,6 +208,18 @@ class Game {
 
     }
 
+
+
+
+    addFlea(){
+
+    }
+
+
+
+
+
+
     draw(ctx) {
 
 
@@ -235,7 +247,7 @@ class Game {
 
                 });
             //render head and body parts 
-            this.drawCentipede(ctx);
+            // this.drawCentipede(ctx);
 
         }
         else if (!this.startGame) {
@@ -247,7 +259,7 @@ class Game {
             );
         }
 
-        else {
+        else if (this.gameOver() === false) {
             ctx.fillStyle = "#ffffff";
             ctx.fillText(
                 "Game Over!",
@@ -354,7 +366,7 @@ class Game {
             this.AllMushrooms,
             // this.allFleas,
             this.allBullets,
-            this.allCentipedes,
+            // this.allCentipedes,
             // this.allSpiders,
             // this.allScorpions,
             [this.zapper]
@@ -387,14 +399,26 @@ class Game {
             this.checkCollisons();
             this.zapper.slowZapper();
             this.addLife();
-            this.createBodySegment();
+            // this.createBodySegment();
 
             // console.log("this.centipede Length : " + this.allCentipedes.length);
-            if (this.allCentipedes.length === 0) {
+            // if (this.allCentipedes.length === 0) {
 
-                this.newLevel();
-            }
+                // this.newLevel();
+            // }
 
+        }
+        else{
+            // console.log("game over");
+
+            // this.startGame= false;
+            // this.reset();
+            this.startGame = false;
+            // this.startGame = true;
+
+
+
+            
         }
     }
 
@@ -464,7 +488,7 @@ class Game {
 
     //check if the game if over
     gameOver() {
-        return this.lives <= 0 ? true : false;
+        return this.lives > 0 ? this.startGame = true : this.startGame=false;
     }
 
 
