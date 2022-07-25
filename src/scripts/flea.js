@@ -20,6 +20,14 @@ class Flea extends MovingObject {
     }
 
 
+
+    move(){
+        
+    }
+
+
+
+
     draw(ctx) {
         this.drawEllipseByCenter(ctx, this.pos[0], this.pos[1], 16, 13);
     }
