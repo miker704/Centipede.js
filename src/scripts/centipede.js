@@ -31,7 +31,7 @@ class Centipede extends MovingObject {
     ctx.fillStyle = Util.randomColors();
     ctx.beginPath();
     for (let i = 0; i < 5; i++) {
-      ctx.lineTo(this.pos[0] + (this.radius*1.25) * Math.cos(i * angle), this.pos[1] + (this.radius * 2) * Math.sin(i * angle));
+      ctx.lineTo(this.pos[0] + (this.radius * 1.25) * Math.cos(i * angle), this.pos[1] + (this.radius * 2) * Math.sin(i * angle));
     }
     ctx.moveTo(this.pos[0], this.pos[1]);
     ctx.lineTo(this.pos[0] + 10, this.pos[1] - 50);
@@ -43,67 +43,6 @@ class Centipede extends MovingObject {
     ctx.stroke();
 
 
-    //spider body
-    // ctx.fillStyle = this.color;
-    // ctx.beginPath();
-    // ctx.arc(this.pos[0], this.pos[1] - 8, 8, 0, 2 * Math.PI);
-    // ctx.arc(this.pos[0], this.pos[1] + 8, 8, 0, 2 * Math.PI);
-    // ctx.fill();
-    // ctx.beginPath();
-    // // Left Legs
-    // ctx.fillStyle = this.color;
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 30);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 35);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 10);
-    // ctx.lineTo(this.pos[0] - 40, this.pos[1] - 10);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 10);
-    // ctx.lineTo(this.pos[0] - 40, this.pos[1] + 10);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 30);
-    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 35);
-    // // Right legs
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 30);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 35);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 10);
-    // ctx.lineTo(this.pos[0] + 40, this.pos[1] - 10);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 10);
-    // ctx.lineTo(this.pos[0] + 40, this.pos[1] + 10);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 30);
-    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 35);
-    // ctx.fill();
-    // ctx.stroke();
-
-    //using semi circles
-    // ctx.fillStyle = Util.randomColors();
-    // ctx.beginPath();
-    // ctx.arc(this.pos[0], this.pos[1], this.radius*1.5, 1.5 * Math.PI, 0.5 * Math.PI, false);
-    
-    // ctx.moveTo(this.pos[0], this.pos[1]+10);
-    // ctx.lineTo(this.pos[0]-10, this.pos[1]+75);
-    // ctx.lineTo(this.pos[0]-10, this.pos[1]+50);
-    
-    // ctx.moveTo(this.pos[0], this.pos[1]-10);
-    // ctx.lineTo(this.pos[0]-10, this.pos[1] - 70);
-    // ctx.lineTo(this.pos[0]-10, this.pos[1] - 50);
-    // ctx.fill();
-    // ctx.stroke();
-    // ctx.closePath();
-
-    // square body 
-    // ctx.fillStyle = this.color;
-    // ctx.fillRect(
-    //   this.pos[0] - this.radius,
-    //   this.pos[1] - this.radius,
-    //   this.radius * 2,
-    //   this.radius * 2
-    // );
 
   }
 
@@ -113,48 +52,11 @@ class Centipede extends MovingObject {
     ctx.fillStyle = Util.randomColors();
     ctx.beginPath();
     for (let i = 0; i < 5; i++) {
-      ctx.lineTo(this.pos[0] + (this.radius*1.25) * Math.cos(i * angle), this.pos[1] + (this.radius * 2) * Math.sin(i * angle));
+      ctx.lineTo(this.pos[0] + (this.radius * 1.25) * Math.cos(i * angle), this.pos[1] + (this.radius * 2) * Math.sin(i * angle));
     }
-    //antennee
-    // ctx.fill();
-    // ctx.stroke();
-    // ctx.beginPath();
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
-    // ctx.lineTo(this.pos[0] + 60, this.pos[1] - 20);
-    // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
-    // ctx.lineTo(this.pos[0] + 60, this.pos[1] + 20);
-    // ctx.fill();
-    // ctx.stroke();
-
-    //antennee with curves
-    // ctx.fill();
-    // ctx.stroke();
-    // ctx.beginPath();
-    // // ctx.fillStyle = this.color;
-    // ctx.moveTo(this.pos[0] + 10, this.pos[1] - 10);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
-    // ctx.lineTo(this.pos[0] + 10, this.pos[1] - 30);
-    // ctx.lineTo(this.pos[0] + 60, this.pos[1] - 20);
 
 
-    // ctx.moveTo(this.pos[0] - 10, this.pos[1] + 10);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
-    // ctx.lineTo(this.pos[0] - 10, this.pos[1] + 30);
-    // ctx.lineTo(this.pos[0] + 60, this.pos[1] + 20);
-    // // ctx.moveTo(this.pos[0], this.pos[1]);
-    // ctx.fill();
-    // ctx.stroke();
-    // ctx.closePath();
-
-    // ctx.fill();
-    // ctx.stroke();
-    // //shorter antentesz
-    // ctx.fillStyle = Util.randomColors();
-    // ctx.beginPath();
-
-//HERE
+    //HERE
 
     ctx.moveTo(this.pos[0] + 10, this.pos[1] - 10);
     ctx.lineTo(this.pos[0] + 40, this.pos[1] - 20);
@@ -182,54 +84,10 @@ class Centipede extends MovingObject {
 
 
 
-
-
-
-
-    // //circle head
-    // // ctx.fillStyle = "blue";
-    // ctx.beginPath();
-    // // ctx.translate(this.pos[0], this.pos[1])
-    // ctx.arc(this.pos[0], this.pos[1], this.radius*1.5, 1.5 * Math.PI, 0.5 * Math.PI, false);
-    // ctx.fill();
-    // ctx.beginPath();
-    // // ctx.fillStyle = "black";
-    // ctx.moveTo(this.pos[0] + 6, this.pos[1] - 10);
-    // ctx.lineTo(this.pos[0] + 40, this.pos[1] - 20);
-    // ctx.lineTo(this.pos[0] + 10, this.pos[1] - 30);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
-    // ctx.closePath();
-    // ctx.moveTo(this.pos[0] + 6, this.pos[1] + 10);
-    // ctx.lineTo(this.pos[0] + 40, this.pos[1] + 20);
-    // ctx.lineTo(this.pos[0] + 10, this.pos[1] + 30);
-    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
-    // ctx.fill();
-    // ctx.stroke();
-  
-    // ctx.beginPath();
-    // ctx.fillStyle = "red";
-    // ctx.arc(this.pos[0] + 4, this.pos[1] + 5, 2, 0, 2 * Math.PI);
-    // ctx.arc(this.pos[0] + 4, this.pos[1] - 5, 2, 0, 2 * Math.PI);
-    // ctx.fill();
-    // ctx.closePath();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
 
-  drawTail(){
+  drawTail() {
 
   }
 
