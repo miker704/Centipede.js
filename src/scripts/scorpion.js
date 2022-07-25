@@ -30,9 +30,7 @@ class Scorpion extends MovingObject {
 
     }
 
-    drawScorpion(){
-
-    }
+   
 
     draw(ctx) {
 
