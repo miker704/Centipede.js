@@ -3,8 +3,20 @@ import MovingObject from "./movingObject";
 import Util from "./utils.js";
 
 
-class Scorpion {
-    constructor(){
+
+class Scorpion extends MovingObject {
+    constructor(options) {
+        super(
+            {
+                // pos: Util.randomScorpionPos(),
+                pos: [90, 60],
+                radius: 42,
+                vel: [0, 0],
+                color: Util.randomColors(),
+                game: options.game
+            }
+        );
+
 
     }
 
