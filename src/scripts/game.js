@@ -123,6 +123,8 @@ class Game {
         });
         this.addStartingShrooms();
         // this.addSpider();
+         // this.addScorpion();
+        //  this.addFlea();s
         console.log("reset Call : ")
 
     }
