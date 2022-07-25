@@ -34,6 +34,12 @@ class Scorpion extends MovingObject {
 
     }
 
+    draw(ctx) {
+
+        this.drawEllipseByCenter(ctx, this.pos[0], this.pos[1], 16, 13);
+
+    }
+
 
     drawEllipseByCenter(ctx, cx, cy, w, h) {
 
