@@ -158,8 +158,8 @@ class BugZapper extends MovingObject {
             this.pos[1] = Game.DIM_Y - this.radius;
             this.vel[1] = this.vel[1] < 0 ? this.vel[1] : 0;
         }
-        else if (this.pos[1] - this.radius < testRange) {
-            this.pos[1] = testRange + this.radius;
+        else if (this.pos[1] - this.radius < topLimit) {
+            this.pos[1] = topLimit + this.radius;
             this.vel[1] = this.vel[1] > 0 ? this.vel[1] : 0;
         }
 
