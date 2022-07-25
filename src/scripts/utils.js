@@ -40,6 +40,28 @@ const Util = {
 
 
 
+    randomScorpionPos() {
+        let x = Math.random() > 0.5 ? 0 : Game.DIM_X;
+        let y = Math.random() * ((Game.DIM_Y - 36) / 2);
+        y += 36 + (Game.DIM_Y / 4);
+
+        return [x, y];
+    },
+
+    randomFleaPos() {
+        let x = Math.random() > 0.5 ? 0 : Game.DIM_X;
+        let y = Math.random() * ((Game.DIM_Y - 36) / 2);
+        y += 36 + (Game.DIM_Y / 4);
+        return [x, y];
+    },
+
+
+
+
+
+
+
+
     randomPosition() {
         let x = Math.random() * (Game.DIM_X) + 0;
         let y = Math.random() * ((Game.DIM_Y - 36) / 2) + 36;
@@ -63,7 +85,7 @@ const Util = {
     // in the score table
     randomMushroomPos() {
         let randomSpawnPoints = new Array();
-        let tempPos= this.randomPosition();
+        let tempPos = this.randomPosition();
         while (randomSpawnPoints.length < Game.NUM_OF_MUSHROOMS) {
             if (randomSpawnPoints.indexOf(tempPos) !== 1
                 || (tempPos[0] <= 24 && tempPos[1] <= 60)
@@ -77,9 +99,9 @@ const Util = {
     },
 
     //location functions to add a proper locations for objects to snap to the grid more properly
-    centipedeNearestPos(pos){
+    centipedeNearestPos(pos) {
         let randPos = [];
-        for (let i = 0; i <2; i++) {
+        for (let i = 0; i < 2; i++) {
             let offset = i === 0 ? 0 : 36;
             let point = pos[i] - offset;
             let difference = (point - 12) % 24;
@@ -93,35 +115,35 @@ const Util = {
         return randPos;
     },
 
-    centipedeLeftMostPos (){
-        return  12;
+    centipedeLeftMostPos() {
+        return 12;
     },
 
-    centipedeRightMostPos(){
+    centipedeRightMostPos() {
         return Game.DIM_X - 12;
     },
 
 
-    centipedeLowestCorner(){
+    centipedeLowestCorner() {
         return Game.DIM_Y - 12;
     },
 
-    centipedeHighestCorner(){
+    centipedeHighestCorner() {
         return 48;
     },
 
     //same math used to bound the players moveable are just created 
     // into a function
-    centipedeHeightLimit(){
-        let twoThirdsofCanvas = ((Game.DIM_Y - 36)*2/3) + 36;
-        let bodyPlacement = twoThirdsofCanvas - (twoThirdsofCanvas%24);
-        return bodyPlacement+ 12;
+    centipedeHeightLimit() {
+        let twoThirdsofCanvas = ((Game.DIM_Y - 36) * 2 / 3) + 36;
+        let bodyPlacement = twoThirdsofCanvas - (twoThirdsofCanvas % 24);
+        return bodyPlacement + 12;
     },
 
-    getRandomYPos(){
+    getRandomYPos() {
         let x = Math.random() * (Game.DIM_X) + 0;
         let y = Math.random() * ((Game.DIM_Y - 36) / 2) + 36;
-        return this.centipedeNearestPos([x,y]);
+        return this.centipedeNearestPos([x, y]);
     }
 
 };
