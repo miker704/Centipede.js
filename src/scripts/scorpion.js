@@ -38,9 +38,8 @@ class Scorpion extends MovingObject {
 
     }
 
-
     drawEllipseByCenter(ctx, cx, cy, w, h) {
-
+       
         ctx.fillStyle = Util.randomColors();
         //tail
         this.drawEllipse(ctx, cx + 2 - w / 2.0, cy + 4 - h / 2.0, w, h - 4);
@@ -64,12 +63,11 @@ class Scorpion extends MovingObject {
         ctx.moveTo(cx + 30, cy + 7);
         ctx.lineTo(cx + 20, cy - 2);
         ctx.lineTo(cx + 15, cy - 2);
+        ctx.fill();
         ctx.closePath();
         ctx.stroke();
-        ctx.fill();
-
-
-
+     
+      
         // //eyes
         ctx.fillStyle = "red";
         ctx.beginPath();
@@ -171,13 +169,6 @@ class Scorpion extends MovingObject {
         ctx.stroke();
 
 
-
-
-
-
-
-
-
         ctx.closePath();
         //claws -bottom
         ctx.beginPath();
@@ -211,13 +202,11 @@ class Scorpion extends MovingObject {
         ctx.closePath();
         ctx.stroke();
 
-
-
-
         ctx.fill();
         ctx.stroke();
 
     }
+
 
     
     drawEllipse(ctx, x, y, w, h) {
