@@ -212,9 +212,24 @@ class Game {
 
 
     addFlea(){
+            this.allFleas.push(
+                new Flea({
 
+                    game:this
+                })
+            )
     }
 
+
+    addScorpion(){
+        this.allScorpions.push(
+            new Scorpion({
+                // pos: Util.randomScorpionPos(),
+                game:this
+            })
+        )
+
+    }
 
 
 
