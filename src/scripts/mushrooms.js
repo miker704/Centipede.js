@@ -26,7 +26,7 @@ class Mushrooms extends MovingObject {
         // this.health = this.game.mushroomHealth();
         // this.startingHealth = this.health;
         // this.damage = [];
-        this.health= 2;
+        this.health = 2;
     }
 
 
@@ -38,22 +38,29 @@ class Mushrooms extends MovingObject {
     // when a scorpion collides with a mushhroom it becomes
     //poisoned
     poisonMushroom() {
-        this.color = '#800080';
+        // this.color = '#800080';
         this.poisoned = true;
     }
 
 
     draw(ctx) {
 
+        //poison colors
+        var mgrd = ctx.createRadialGradient(this.pos[0] + 1, this.pos[1] + 1, this.radius / 2, this.pos[0], this.pos[1], this.radius);
+        mgrd.addColorStop(0, "#9D00FF");
+        //#9063CD   #C724B1    #9D00FF
+        mgrd.addColorStop(0.6, "#2E1A47");
+        
 
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = this.isPoisoned() ? mgrd : this.color;
+
         //create the the mushroom stem
         let mushroomStem = 8;
         ctx.fillRect(this.pos[0] - mushroomStem / 2, this.pos[1] - this.radius / 2, mushroomStem, this.radius * 1.5);
 
         //create the mushroom cap
         ctx.beginPath();
-        ctx.ellipse(this.pos[0], this.pos[1] - this.radius / 2, this.radius, this.radius / 2, 0, 0, 2 * Math.PI,false);
+        ctx.ellipse(this.pos[0], this.pos[1] - this.radius / 2, this.radius, this.radius / 2, 0, 0, 2 * Math.PI, false);
         ctx.fill();
         // ctx.stroke();
 
@@ -61,7 +68,7 @@ class Mushrooms extends MovingObject {
         // if (this.health === this.startingHealth) {
         //     return;
         // }
-    
+
         //     ctx.fillStyle = '#000000';
         //     let wound = (4-(this.startingHealth / 2));
         //     for (let i = 0; i < this.startingHealth - this.health; i++) {
@@ -69,7 +76,7 @@ class Mushrooms extends MovingObject {
         //         while (this.damage.length < i + 1) {
         //             this.damage.push(Math.random() * this.radius * 1.5 + this.pos[0] - this.radius * (3 / 4));
         //         }
-                
+
         //                     ctx.beginPath();
         //                     ctx.arc(this.damage[i],this.pos[1]-this.radius*(wound/10) ,wound,0,2*Math.PI,false);
         //                     ctx.fill();
@@ -78,8 +85,8 @@ class Mushrooms extends MovingObject {
 
 
     }
-    
-    hitByZapper () {
+
+    hitByZapper() {
         this.health--;
         // console.log("hitting mushroom:"+ this.health );
 
@@ -90,9 +97,9 @@ class Mushrooms extends MovingObject {
             // console.log("destroyed mushroom");
             this.game.incrementScore(50);
             // this.game.removeEntity(this);
-            return; 
+            return;
 
-        } 
+        }
 
     }
 
