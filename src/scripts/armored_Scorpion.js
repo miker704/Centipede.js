@@ -29,6 +29,40 @@ class ArmoredScorpion extends MovingObject {
         this.mushroomTobePoisoned = null;
 
     }
+
+    //collison detections
+    collatWithMushroom() {
+        let collided = this.game.AllMushrooms.some(
+            (mushroom) => {
+                this.mushroomTobePoisoned = mushroom;               
+                return this.hasCollisonOccured(mushroom);
+
+            }, this);
+        if (collided) {
+            console.log(this.mushroomTobePoisoned);
+            this.poisonMushrooms(this.mushroomTobePoisoned);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
