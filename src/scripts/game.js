@@ -214,10 +214,15 @@ class Game {
 
 
     addFlea() {
+
+        let x_coord = Math.random() * (Game.DIM_X - 0) + 0;
+        let y_coord = Util.centipedeHighestCorner();
+
         this.allFleas.push(
             new Flea({
-                // pos: Util.randomFleaPos(),
-
+                pos: [x_coord, y_coord],
+                vel: [Math.random() * (this.level / 4) - (this.level / 8), 0],
+                acceleration: (0.05 + this.level * 0.01) * 1,
                 game: this
             })
         )
