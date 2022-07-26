@@ -1,36 +1,81 @@
-
 import MovingObject from "./movingObject";
 import Util from "./utils.js";
-
-
 
 class Scorpion extends MovingObject {
     constructor(options) {
         super(
             {
-                // pos: Util.randomScorpionPos(),
-                pos: [90, 60],
-                radius: 42,
-                vel: [0, 0],
+               
+                pos: options.pos,
+                radius: 24,
+                vel: options.vel,
                 color: Util.randomColors(),
                 game: options.game
             }
-        );
+            );
+          
+        //special properties for spawn of scorpion they are
+        //2 versions the classic version that moves horizontally 
+        // and another exclusive to this game that tracks the player 
+        // and has armor
+        this.mushroomTobePoisoned = null;
+        this.startingPos = this.pos;
+
+    }
+    
+    //collison detections
+    collatWithMushroom() {
+        let collided = this.game.AllMushrooms.some(
+            (mushroom) => {
+                this.mushroomTobePoisoned = mushroom;    
+                return this.hasCollisonOccured(mushroom);
+
+            }, this);
+        if (collided) {
+            this.poisonMushrooms(this.mushroomTobePoisoned);
+        }
+    }
+    
+
+    hitByZapper(){
+        this.game.removeEntity(this);
+        //scorpion rewards most points
+        this.game.incrementScore(1000);
+    }
+
+ 
+    poisonMushrooms(mushroom) {
+
+        if (Math.random() > 0.95) {
+       
+            mushroom.poisonMushroom();
+
+        }
 
 
     }
+    
+    //scorpion is made to run horizontally in the orginal
+    //game however we will give it the ability to randomly
+    // have a chance to do more than that
+    // therefore default movement means there is no y-axis movement
+    // on velocity
+    move() {
 
+        if(this.startingPos[0]>=600){
+            this.vel[0] *=(-1);
+        }
+      
+            this.pos[0]+=this.vel[0];
+            this.pos[1]+=this.vel[1];
+    
+        this.collatWithMushroom();
 
-    poisonMushrooms(){
-
+        if(this.game.outOfBounds(this.pos)){
+            this.game.removeEntity(this);
+        }
     }
 
-
-    scorpionMovement(){
-
-    }
-
-   
 
     draw(ctx) {
 
@@ -67,7 +112,8 @@ class Scorpion extends MovingObject {
         ctx.closePath();
         ctx.stroke();
      
-      
+
+
         // //eyes
         ctx.fillStyle = "red";
         ctx.beginPath();
@@ -208,7 +254,8 @@ class Scorpion extends MovingObject {
     }
 
 
-    
+
+
     drawEllipse(ctx, x, y, w, h) {
         let euler = .5522848,
             ox = (w / 2) * euler, // control point offset horizontal
@@ -229,6 +276,7 @@ class Scorpion extends MovingObject {
         ctx.fill();
         ctx.stroke();
     }
+
 }
 
 
