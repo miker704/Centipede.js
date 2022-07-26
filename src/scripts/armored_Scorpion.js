@@ -66,7 +66,31 @@ class ArmoredScorpion extends MovingObject {
     }
 
 
-   
+    poisonMushrooms(mushroom) {
+
+        if (Math.random() > 0.75) {
+            mushroom.poisonMushroom();
+
+        }
+
+
+    }
+
+
+     //scorpion is made to run horizontally in the orginal
+    //game however we will give it the ability to randomly
+    // have a chance to do more than that
+    // therefore default movement means there is no y-axis movement
+    // on velocity
+    move() {
+
+        this.pos[0] += this.vel[0];
+        this.pos[1] += this.vel[1];
+        this.collatWithMushroom();
+        this.rotation();
+        this.increaseVelocity();
+
+    }
 
 
 
