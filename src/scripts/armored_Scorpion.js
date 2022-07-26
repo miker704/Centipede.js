@@ -108,6 +108,17 @@ class ArmoredScorpion extends MovingObject {
     }
 
 
+    increaseVelocity() {
+        let velocityofX = this.maxVelocity * Math.cos(this.direction);
+        let velocityofY = this.maxVelocity * Math.sin(this.direction);
+        this.vel = [velocityofX, velocityofY];
+    }
+
+    rotation() {
+        let rotationAmount = Math.min(Math.abs(this.findPlayer() - this.direction), Math.PI / 8);
+        this.direction += this.findPlayer() > this.direction ? rotationAmount : (rotationAmount * -1);
+
+    }
 
 
 
