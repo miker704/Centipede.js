@@ -1,22 +1,20 @@
 import MovingObject from "./movingObject";
-import Util from "./utils";
-
-
-
+import Scorpion from "./scorpion";
+import Util from "./utils.js";
 
 class ArmoredScorpion extends MovingObject {
-    constructor(options){
+    constructor(options) {
         super(
             {
                 pos: options.pos,
                 radius: 36,
-                vel: [0,0],
+                vel: [0, 0],
                 color: Util.randomColors(),
                 game: options.game
             }
         );
 
-         //special properties for spawn of scorpion they are
+        //special properties for spawn of scorpion they are
         //2 versions the classic version that moves horizontally 
         // and another exclusive to this game that tracks the player 
         // and has armor
@@ -39,14 +37,12 @@ class ArmoredScorpion extends MovingObject {
 
             }, this);
         if (collided) {
-            console.log(this.mushroomTobePoisoned);
+          
             this.poisonMushrooms(this.mushroomTobePoisoned);
         }
     }
 
 
-
-    
     hitByZapper() {
         if (this.health === 0 && this.armor === 0) {
             this.game.removeEntity(this);
@@ -66,9 +62,11 @@ class ArmoredScorpion extends MovingObject {
     }
 
 
+
     poisonMushrooms(mushroom) {
 
         if (Math.random() > 0.75) {
+        
             mushroom.poisonMushroom();
 
         }
@@ -76,8 +74,7 @@ class ArmoredScorpion extends MovingObject {
 
     }
 
-
-     //scorpion is made to run horizontally in the orginal
+    //scorpion is made to run horizontally in the orginal
     //game however we will give it the ability to randomly
     // have a chance to do more than that
     // therefore default movement means there is no y-axis movement
@@ -91,7 +88,6 @@ class ArmoredScorpion extends MovingObject {
         this.increaseVelocity();
 
     }
-
 
 
     findPlayer() {
@@ -119,8 +115,6 @@ class ArmoredScorpion extends MovingObject {
         this.direction += this.findPlayer() > this.direction ? rotationAmount : (rotationAmount * -1);
 
     }
-
-
 
 
     draw(ctx) {
@@ -324,9 +318,8 @@ class ArmoredScorpion extends MovingObject {
         ctx.stroke();
     }
 
-
-
 }
+
 
 
 
