@@ -94,7 +94,18 @@ class ArmoredScorpion extends MovingObject {
 
 
 
+    findPlayer() {
+        let x = this.pos[0] - this.game.zapper.pos[0];
+        let y = this.pos[1] - this.game.zapper.pos[1];
+        if (x === 0 || Math.abs(y / x) > 10) {
+            this.direction = y < 0 ? Math.PI / 2 : -Math.PI / 2;
+            return this.direction;
+        }
+        let angleofTrajectory = Math.atan(y / x);
+        if (x > 0) { angleofTrajectory -= Math.PI; }
 
+        return angleofTrajectory;
+    }
 
 
 
