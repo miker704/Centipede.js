@@ -29,7 +29,13 @@ class Flea extends MovingObject {
     }
 
     hitByZapper(){
-
+        if (this.health === 0) {
+            this.game.removeEntity(this);
+            this.game.incrementScore(200);
+        }
+        else {
+            this.health--;
+        }
     }
 
 
