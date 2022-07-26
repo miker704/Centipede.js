@@ -46,6 +46,8 @@ class Game {
         });
         // this.addStartingShrooms();
         // this.zapper;
+        // this.addArmoredScorpion();
+        // this.spawner = [];
 
 
     }
