@@ -232,7 +232,8 @@ class Game {
     addScorpion() {
         this.allScorpions.push(
             new Scorpion({
-                // pos: Util.randomScorpionPos(),
+                pos: Util.randomScorpionPos(),
+                vel: [3, 0],
                 game: this
             })
         )
@@ -256,6 +257,15 @@ class Game {
        
     //     )
     // }
+
+     // addWasp(){
+    //     this.allWasps.push(
+    //         new Wasp({
+
+    //         })
+    //     )
+    // }
+
 
 
     draw(ctx) {
