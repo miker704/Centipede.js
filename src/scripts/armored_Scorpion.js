@@ -66,6 +66,7 @@ class ArmoredScorpion extends MovingObject {
     }
 
 
+   
 
 
 
