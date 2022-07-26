@@ -15,7 +15,11 @@ class Flea extends MovingObject {
             game: options.game
 
         })
-
+        this.health = 2;
+        this.direction = Math.random() * 2 * Math.PI;
+        this.gravity = true;
+        this.rotation = 0.05;
+        this.acceleration = options.acceleration;
 
     }
 
