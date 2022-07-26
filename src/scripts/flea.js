@@ -8,39 +8,86 @@ class Flea extends MovingObject {
         super({
 
             // pos: [90, 60],
-            pos: Util.randomFleaPos(),
-            radius: 42,
-            vel: [0, 0],
+            pos: options.pos,
+            radius: 12,
+            vel: options.vel,
             color: Util.randomColors(),
             game: options.game
 
         })
+
         this.health = 2;
         this.direction = Math.random() * 2 * Math.PI;
-        this.gravity = true;
+        this.gravitation = true;
         this.rotation = 0.05;
         this.acceleration = options.acceleration;
+      
+
 
     }
 
-     //fleas basically drop down from the top as they travel
+    //fleas basically drop down from the top as they travel
     //down they spawn mushrooms they spawn when around 1/5 of mushrooms
     // are gone from the current level
     // they take 2 hits to defeat
 
-    move(){
-        
+    move() {
+
+        this.bounciness();
+        // this.pos[0]+=this.vel[0];
+        // this.pos[1]+=this.vel[1];
+        // this.gravitation && this.gravity();
+        // if(this.game.outOfBounds(this.pos)){
+        // this.game.removeEntity(this);
+        // }
+        super.move(); //use super move instead its the same
+
+        this.direction += this.rotation;
+        this.fleaSpawnMushroom();
+
     }
 
-    hitByZapper(){
+    hitByZapper() {
+        //flea speed doubles if it is shot
         if (this.health === 0) {
             this.game.removeEntity(this);
             this.game.incrementScore(200);
         }
+        else if (this.health === 1) {
+            this.acceleration = this.acceleration * 2;
+        }
         else {
             this.health--;
         }
+
     }
+
+
+    fleaSpawnMushroom() {
+        if (Math.random() > 0.9) {
+            let mushroomPos = Util.centipedeNearestPos(this.pos)
+
+            if(mushroomPos[1] <=724){ //prevent mushroom blocking the bottom floor as player cant shoot it
+                
+                
+                this.game.addMushroomHere({
+                    // pos: Util.centipedeNearestPos(this.pos),
+                    pos:mushroomPos,
+                    game: this.game
+                })
+            }
+            // else if(mushroomPos[1] >=724){
+                // console.log("mushroom y pos ", mushroomPos);
+                // console.log("mushroom spawn trying to block player")
+            // }
+
+
+
+
+        }
+    }
+
+
 
 
     draw(ctx) {
@@ -141,7 +188,7 @@ class Flea extends MovingObject {
 
     drawEllipse(ctx, x, y, w, h) {
 
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = Util.randomColors();
 
         let euler = .5522848,
             ox = (w / 2) * euler, // control point offset horizontal
