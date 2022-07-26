@@ -34,6 +34,9 @@ class Game {
         this.allBullets = [];
         this.gameEntities = [];
         this.nextLife = 10000;
+        this.allArmoredScorpions = [];
+        this.spawner = [];
+
         //centipede has a random body size between  10 -12 segments long
         this.bodyLength = Math.floor(Math.random() * (12 - 10 + 1)) + 10;
 
@@ -119,6 +122,8 @@ class Game {
         this.allBullets = [];
         this.gameEntities = [];
         this.nextLife = 10000;
+        this.allArmoredScorpions = [];
+        this.spawner = [];
         this.zapper = new BugZapper({
             pos: [300, 36 + ((Game.DIM_Y - 36) * 3 / 4)],
             game: this,
@@ -243,22 +248,22 @@ class Game {
     }
 
 
-    // addArmoredScorpion(){
+    addArmoredScorpion() {
 
-    //     let startPos = Util.randomScorpionPos();
+        let startPos = Util.randomScorpionPos();
 
-    //     this.allArmoredScorpions.push(
-            
-    //         new ArmoredScorpion({
-    //             pos: startPos,
-    //             direction: startPos[0] === 0 ? 0 : -Math.PI,
+        this.allArmoredScorpions.push(
 
-    //             game: this,
-    //             maxVelocity:((this.level * 0.5) * 2)
-    //         })
-       
-    //     )
-    // }
+            new ArmoredScorpion({
+                pos: startPos,
+                direction: startPos[0] === 0 ? 0 : -Math.PI,
+
+                game: this,
+                maxVelocity: ((this.level * 0.5) * 2)
+            })
+
+        )
+    }
 
      // addWasp(){
     //     this.allWasps.push(
