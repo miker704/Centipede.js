@@ -12,7 +12,7 @@ class Spider extends MovingObject {
             color: Util.randomColors(),
             game: options.game
         });
-        // console.log(this.radius)
+       
 
         this.direction = options.direction;
         this.maxVelocity = options.maxVelocity;
@@ -70,10 +70,31 @@ class Spider extends MovingObject {
         this.increaseVelocity();
     }
 
+
+    currentDistanceFromPlayer(){
+        let xCoord = this.pos[0] - this.game.zapper.pos[0];
+        let yCoord = this.pos[1] - this.game.zapper.pos[1];
+        //using the distance formula
+        let dist = Math.sqrt(Math.pow(xCoord, 2) + Math.pow(yCoord, 2));
+        return dist;
+    }
+
+
     hitByZapper() {
-        // console.log("removed spider");
+        let distanceForScore = this.currentDistanceFromPlayer();
+        let rangeScore = 0;
+        if(distanceForScore <=100){
+            rangeScore = 900;
+        }
+        else if( distanceForScore > 100 && distanceForScore <= 200){
+            rangeScore = 600;
+        }
+        else{
+            rangeScore = 300;
+        }
+     
         this.game.removeEntity(this);
-        this.game.incrementScore(600);
+        this.game.incrementScore(rangeScore);
 
     }
 
