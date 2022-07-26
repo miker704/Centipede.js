@@ -24,6 +24,7 @@ class MovingObject {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
        
+        this.gravitation && this.gravity();
         // add outofbounds and remove function
         if(this.game.outOfBounds(this.pos)){
             // console.log("object has been removed: " + this.pos[0] + " "+ this.pos[1]);
@@ -41,13 +42,14 @@ class MovingObject {
     hasCollisonOccured (entity) {
         let xCoord = this.pos[0] - entity.pos[0];
         let yCoord = this.pos[1] - entity.pos[1];
+        //distance formula
         let dist = Math.sqrt(Math.pow(xCoord, 2) + Math.pow(yCoord, 2));
         return dist < (this.radius + entity.radius);
     }
 
     // if something is hit by the bug zapper send it to the game remove function
     hitByZapper () {
-        // console.log("removed mushroom on movingobject");
+        
         this.game.removeEntity(this);
     }
 
