@@ -8,6 +8,10 @@ import Centipede from "./centipede.js";
 import Flea from "./flea.js";
 import ZapperFire from "./zapperFire.js";
 import Scorpion from "./scorpion.js";
+import JumpingSpider from "./jumping_Spider.js";
+import Wasp from "./wasp.js";
+import LightningWasp from "./lightning_Wasp.js";
+
 // the player is the bugzapper that can be controlled
 //player can move the zapper range of up to 30% of the bottom
 //screen 
@@ -172,8 +176,15 @@ class BugZapper extends MovingObject {
     //it
     collisonDetection (entity) {
 
+    
         if ((entity instanceof Spider || entity instanceof Centipede ||
-            entity instanceof Flea || entity instanceof Scorpion)) {
+            entity instanceof Flea || entity instanceof Scorpion ||
+            entity instanceof ArmoredScorpion || 
+            entity instanceof Wasp ||
+            entity instanceof JumpingSpider ||
+            entity instanceof LightningWasp
+            )) {
+
             this.game.lives--;
 
         }
