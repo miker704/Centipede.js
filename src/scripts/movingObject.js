@@ -68,6 +68,21 @@ class MovingObject {
         }
     }
 
+
+    waspBounciness () {
+       
+        let newX_coord = this.pos[0] + this.vel[0];
+        let newY_coord = this.pos[1] + this.vel[1];
+        if (newX_coord > Game.DIM_X || newX_coord < 0) {
+            this.vel[0] *= -1;
+        }
+        if(newY_coord > Game.DIM_Y || newY_coord < 0){
+            this.vel[1] *= -1;
+        }
+
+    }
+
+
 }
 
 
