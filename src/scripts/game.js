@@ -36,6 +36,9 @@ class Game {
         this.nextLife = 10000;
         this.allArmoredScorpions = [];
         this.spawner = [];
+        this.allJumpingSpiders = [];
+        this.allWasps = [];
+        this.allLightningWasps = [];
 
         //centipede has a random body size between  10 -12 segments long
         this.bodyLength = Math.floor(Math.random() * (12 - 10 + 1)) + 10;
@@ -124,6 +127,9 @@ class Game {
         this.nextLife = 10000;
         this.allArmoredScorpions = [];
         this.spawner = [];
+        this.allJumpingSpiders = [];
+        this.allWasps = [];
+        this.allLightningWasps = [];
         this.zapper = new BugZapper({
             pos: [300, 36 + ((Game.DIM_Y - 36) * 3 / 4)],
             game: this,
@@ -265,13 +271,45 @@ class Game {
         )
     }
 
-     // addWasp(){
-    //     this.allWasps.push(
-    //         new Wasp({
+    addWasp(){
+        let x_coord = Math.random() * (Game.DIM_X - 0) + 0;
+        let y_coord = Util.centipedeHighestCorner();
 
-    //         })
-    //     )
-    // }
+        this.allWasps.push(
+            new Wasp({
+                pos: [x_coord,y_coord],
+                vel: [(5 + this.level * 0.5), 0],
+                game: this,
+                acceleration: (0.05 + this.level * 0.01) * 1,
+
+            })
+        )
+    }
+
+
+
+    addLightningWasp(){
+        let x_coord = Math.random() * (Game.DIM_X - 0) + 0;
+        let y_coord = Util.centipedeHighestCorner();
+
+        this.allLightningWasps.push(
+            new LightningWasp({
+                pos: [x_coord,y_coord],
+                vel: [10, 10],
+                game: this,
+                acceleration: (0.05 + this.level * 0.01) * 1,
+
+            })
+        )
+    }
+
+    addJumpingSpider(){
+        this.allJumpingSpiders.push(
+            new JumpingSpider({
+
+            })
+        )
+    }
 
 
 
