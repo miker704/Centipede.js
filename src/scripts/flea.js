@@ -49,6 +49,14 @@ class Flea extends MovingObject {
 
     hitByZapper() {
         //flea speed doubles if it is shot
+
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 12,
+                color: this.color
+            }
+        );
         if (this.health === 0) {
             this.game.removeEntity(this);
             this.game.incrementScore(200);
