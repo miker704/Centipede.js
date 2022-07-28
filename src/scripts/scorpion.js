@@ -14,6 +14,7 @@ class Scorpion extends MovingObject {
             }
             );
           
+        
         //special properties for spawn of scorpion they are
         //2 versions the classic version that moves horizontally 
         // and another exclusive to this game that tracks the player 
@@ -38,6 +39,15 @@ class Scorpion extends MovingObject {
     
 
     hitByZapper(){
+
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 24,
+                color: this.color
+            }
+        );
+
         this.game.removeEntity(this);
         //scorpion rewards most points
         this.game.incrementScore(1000);
@@ -77,6 +87,8 @@ class Scorpion extends MovingObject {
     }
 
 
+
+
     draw(ctx) {
 
         this.drawEllipseByCenter(ctx, this.pos[0], this.pos[1], 16, 13);
@@ -112,6 +124,7 @@ class Scorpion extends MovingObject {
         ctx.closePath();
         ctx.stroke();
      
+      
 
 
         // //eyes
@@ -127,12 +140,15 @@ class Scorpion extends MovingObject {
         ctx.fillStyle = Util.randomColors();
         //legs - top side
         ctx.beginPath();
+        // ctx.strokeStyle = Util.randomColors();
+        // ctx.strokeStyle = this.color;
+        // ctx.strokeStyle = "white";
 
         ctx.moveTo(this.pos[0] + 30, this.pos[1] + 35);
         ctx.lineTo(this.pos[0] + 5, this.pos[1] + 20);
         ctx.lineTo(this.pos[0] + 20, this.pos[1] + 5);
-
-
+   
+        ctx.closePath();
         ctx.stroke();
 
 
@@ -215,6 +231,13 @@ class Scorpion extends MovingObject {
         ctx.stroke();
 
 
+
+
+
+
+
+
+
         ctx.closePath();
         //claws -bottom
         ctx.beginPath();
@@ -248,10 +271,15 @@ class Scorpion extends MovingObject {
         ctx.closePath();
         ctx.stroke();
 
+
+
+
         ctx.fill();
         ctx.stroke();
 
     }
+
+
 
 
 
@@ -278,6 +306,10 @@ class Scorpion extends MovingObject {
     }
 
 }
+
+
+
+
 
 
 export default Scorpion;
