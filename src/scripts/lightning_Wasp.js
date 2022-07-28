@@ -7,8 +7,8 @@ class LightningWasp extends MovingObject {
     constructor(options) {
         super(
             {
-                // pos: options.pos,
-                pos: [90,60],
+                pos: options.pos,
+                // pos: [90,60],
                 radius: 16,
                 vel: options.vel,
                 color: Util.randomColors(),
@@ -16,8 +16,8 @@ class LightningWasp extends MovingObject {
 
             }
         )
-        this.armor = 2;
-        this.health = 10;
+        this.armor = 1;
+        this.health = 2;
         this.direction = Math.random() * 2 * Math.PI;
         this.gravitation = true;
         this.rotation = 0.05;
@@ -49,7 +49,13 @@ class LightningWasp extends MovingObject {
 
     hitByZapper() {
         //wasp speed doubles if it is shot
-
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 16,
+                color: this.color
+            }
+        );
         if (this.armor !== 0) {
             this.armor--;
         }
@@ -57,10 +63,10 @@ class LightningWasp extends MovingObject {
             this.health--;
         }
 
-        if (this.health !== 10) {
+        if (this.health === 1) {
             this.acceleration = this.acceleration * 5;
-            this.vel[0] *= this.health > 4 ? 1.5 : 2;
-            this.vel[1] *= this.health > 4 ? 1.5 : 2;
+            this.vel[0] *=  2;
+            this.vel[1] *=  2;
             
         }
 
