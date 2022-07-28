@@ -17,7 +17,7 @@ class LightningWasp extends MovingObject {
             }
         )
         this.armor = 1;
-        this.health = 2;
+        this.health = 3;
         this.direction = Math.random() * 2 * Math.PI;
         this.gravitation = true;
         this.rotation = 0.05;
@@ -63,7 +63,7 @@ class LightningWasp extends MovingObject {
             this.health--;
         }
 
-        if (this.health === 1) {
+        if (this.health === 2) {
             this.acceleration = this.acceleration * 5;
             this.vel[0] *=  2;
             this.vel[1] *=  2;
