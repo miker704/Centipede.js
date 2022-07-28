@@ -86,6 +86,11 @@ canvas {
 
 }
 
+.game-play-wikia li {
+ font-weight: bold;
+
+}
+
 
 .contain {
   user-select: none;
@@ -97,9 +102,71 @@ canvas {
 
 
 
-.circle {
-  background: lightblue;
+.circle-extra-life {
+  background:#FFD700;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 12px;
+  height: 12px;
 }
+
+.circle-FasterFireRate {
+  background: #B87333;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.circle-Shield {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.circle-ClearPoisonMushrooms {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+
+.circle-Wipeout {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.circle-Barrell {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.circle-Spread {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.circle-Splay {
+  background:#FFD700;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+/* 
+let powerUpColorCode = {
+  'ExtraLife': '#FFD700', // gold
+  'FasterFireRate': '#B87333', //copper
+  'Shield': '#00FFFF', //cyan
+  'ClearPoisonMushrooms': '#2A0134', // poison purple
+  'Wipeout': '#880808',//blood red
+  'Splay': '#B9F2FF', // "Diamond"
+  'Spread': '#50C878', //emerald green
+  'Barrell': '#32CD32' //lime green
+} */
