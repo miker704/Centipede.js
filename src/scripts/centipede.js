@@ -19,8 +19,11 @@ class Centipede extends MovingObject {
 
     });
 
-
-
+    this.direction = Math.random() * 2 * Math.PI;
+    this.gravitation = true;
+    this.rotation = 0.05;
+    this.acceleration = options.acceleration;
+    this.mushroom = null;
 
   }
 
@@ -43,6 +46,67 @@ class Centipede extends MovingObject {
     ctx.stroke();
 
 
+    //spider body
+    // ctx.fillStyle = this.color;
+    // ctx.beginPath();
+    // ctx.arc(this.pos[0], this.pos[1] - 8, 8, 0, 2 * Math.PI);
+    // ctx.arc(this.pos[0], this.pos[1] + 8, 8, 0, 2 * Math.PI);
+    // ctx.fill();
+    // ctx.beginPath();
+    // // Left Legs
+    // ctx.fillStyle = this.color;
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 30);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 35);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] - 10);
+    // ctx.lineTo(this.pos[0] - 40, this.pos[1] - 10);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 10);
+    // ctx.lineTo(this.pos[0] - 40, this.pos[1] + 10);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 30);
+    // ctx.lineTo(this.pos[0] - 30, this.pos[1] + 35);
+    // // Right legs
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 30);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 35);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] - 10);
+    // ctx.lineTo(this.pos[0] + 40, this.pos[1] - 10);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 10);
+    // ctx.lineTo(this.pos[0] + 40, this.pos[1] + 10);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 30);
+    // ctx.lineTo(this.pos[0] + 30, this.pos[1] + 35);
+    // ctx.fill();
+    // ctx.stroke();
+
+    //using semi circles
+    // ctx.fillStyle = Util.randomColors();
+    // ctx.beginPath();
+    // ctx.arc(this.pos[0], this.pos[1], this.radius*1.5, 1.5 * Math.PI, 0.5 * Math.PI, false);
+
+    // ctx.moveTo(this.pos[0], this.pos[1]+10);
+    // ctx.lineTo(this.pos[0]-10, this.pos[1]+75);
+    // ctx.lineTo(this.pos[0]-10, this.pos[1]+50);
+
+    // ctx.moveTo(this.pos[0], this.pos[1]-10);
+    // ctx.lineTo(this.pos[0]-10, this.pos[1] - 70);
+    // ctx.lineTo(this.pos[0]-10, this.pos[1] - 50);
+    // ctx.fill();
+    // ctx.stroke();
+    // ctx.closePath();
+
+    // square body 
+    // ctx.fillStyle = this.color;
+    // ctx.fillRect(
+    //   this.pos[0] - this.radius,
+    //   this.pos[1] - this.radius,
+    //   this.radius * 2,
+    //   this.radius * 2
+    // );
 
   }
 
@@ -54,7 +118,44 @@ class Centipede extends MovingObject {
     for (let i = 0; i < 5; i++) {
       ctx.lineTo(this.pos[0] + (this.radius * 1.25) * Math.cos(i * angle), this.pos[1] + (this.radius * 2) * Math.sin(i * angle));
     }
+    //antennee
+    // ctx.fill();
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
+    // ctx.lineTo(this.pos[0] + 60, this.pos[1] - 20);
+    // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
+    // ctx.lineTo(this.pos[0] + 60, this.pos[1] + 20);
+    // ctx.fill();
+    // ctx.stroke();
 
+    //antennee with curves
+    // ctx.fill();
+    // ctx.stroke();
+    // ctx.beginPath();
+    // // ctx.fillStyle = this.color;
+    // ctx.moveTo(this.pos[0] + 10, this.pos[1] - 10);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
+    // ctx.lineTo(this.pos[0] + 10, this.pos[1] - 30);
+    // ctx.lineTo(this.pos[0] + 60, this.pos[1] - 20);
+
+
+    // ctx.moveTo(this.pos[0] - 10, this.pos[1] + 10);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
+    // ctx.lineTo(this.pos[0] - 10, this.pos[1] + 30);
+    // ctx.lineTo(this.pos[0] + 60, this.pos[1] + 20);
+    // // ctx.moveTo(this.pos[0], this.pos[1]);
+    // ctx.fill();
+    // ctx.stroke();
+    // ctx.closePath();
+
+    // ctx.fill();
+    // ctx.stroke();
+    // //shorter antentesz
+    // ctx.fillStyle = Util.randomColors();
+    // ctx.beginPath();
 
     //HERE
 
@@ -84,6 +185,50 @@ class Centipede extends MovingObject {
 
 
 
+
+
+
+
+    // //circle head
+    // // ctx.fillStyle = "blue";
+    // ctx.beginPath();
+    // // ctx.translate(this.pos[0], this.pos[1])
+    // ctx.arc(this.pos[0], this.pos[1], this.radius*1.5, 1.5 * Math.PI, 0.5 * Math.PI, false);
+    // ctx.fill();
+    // ctx.beginPath();
+    // // ctx.fillStyle = "black";
+    // ctx.moveTo(this.pos[0] + 6, this.pos[1] - 10);
+    // ctx.lineTo(this.pos[0] + 40, this.pos[1] - 20);
+    // ctx.lineTo(this.pos[0] + 10, this.pos[1] - 30);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] - 20);
+    // ctx.closePath();
+    // ctx.moveTo(this.pos[0] + 6, this.pos[1] + 10);
+    // ctx.lineTo(this.pos[0] + 40, this.pos[1] + 20);
+    // ctx.lineTo(this.pos[0] + 10, this.pos[1] + 30);
+    // ctx.lineTo(this.pos[0] + 50, this.pos[1] + 20);
+    // ctx.fill();
+    // ctx.stroke();
+
+    // ctx.beginPath();
+    // ctx.fillStyle = "red";
+    // ctx.arc(this.pos[0] + 4, this.pos[1] + 5, 2, 0, 2 * Math.PI);
+    // ctx.arc(this.pos[0] + 4, this.pos[1] - 5, 2, 0, 2 * Math.PI);
+    // ctx.fill();
+    // ctx.closePath();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
@@ -95,26 +240,40 @@ class Centipede extends MovingObject {
 
   move() {
     let newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
+    let drop = this.game.allCentipedes.every((seg) => {
+      seg.pos[0] > 0;
+    })
     let splitSize;
     if (this.hitBottomOfCanvas(newPos)) {
       // console.log("centipede has hit bottom canvas");
       // console.log("moving up");
-
-      this.moveUp();
-      splitSize = true;
+      // if (this.centipedePoisoned() && drop === true) {
+        // this.dropDown();
+      // } else {
+        this.moveUp();
+        splitSize = true;
+      // }
+      // this.moveUp();
+      // splitSize = true;
 
     }
     else if (this.hitTopOfCanvas(newPos)) {
       // console.log("centipede has hit top canvas");
-
+      // if (this.centipedePoisoned() === true && drop === true) {
+      //   this.dropDown();
+      // }
       let swap = this.vel[0];
       this.vel[0] = (this.vel[1]) * -1;
       this.vel[1] = swap;
       splitSize = true;
     }
     else if (this.hitSideWall(newPos) || this.centipedeCollatsMushroom(newPos)) {
+      // if (this.centipedePoisoned() === true && drop === true) {
+      //   this.dropDown();
+      // }
       if (this.pos[1] === Util.centipedeLowestCorner()) {
         // console.log("centipede has hitwall of canvas   moving up ");
+
         this.moveUp();
       }
       else {
@@ -125,6 +284,16 @@ class Centipede extends MovingObject {
       splitSize = true;
     }
     else if (this.reachedNextRow(newPos)) {
+
+      // if (this.centipedePoisoned() === true && drop === true) {
+      //   this.dropDown();
+
+
+      // }
+
+      // else {
+
+
       this.newRow = null;
       this.vel[0] = -this.previousDirection;
       this.vel[1] = 0;
@@ -132,9 +301,11 @@ class Centipede extends MovingObject {
       // console.log("centipede has reached next row ");
 
       if (this.centipedeCollatsMushroom(newRowPos) || this.hitSideWall(newRowPos)) {
+
         this.vel[0] *= -1;
       }
       splitSize = true;
+      // }
     }
     this.pos[0] += this.vel[0];
     this.pos[1] += this.vel[1];
@@ -153,12 +324,14 @@ class Centipede extends MovingObject {
 
 
   hitByZapper() {
-    // console.log("hit by zapper");
-    // console.log("centipede length: ");
-    // console.log(this.game.allCentipedes.length);
-    // console.log("centipede body length: ");
-    // console.log(this.game.bodyLength);
 
+    this.game.addSparks(
+      {
+        pos: this.pos.slice(),
+        amount: 16,
+        color: this.color
+      }
+    );
 
     this.game.removeEntity(this);
     this.game.incrementScore(100);
@@ -245,11 +418,12 @@ class Centipede extends MovingObject {
   // refactor to check for poison mushrooms when the scorpion 
   // is implemented
   centipedeCollatsMushroom(newPos) {
-    // console.log("cent hit mushroom");
-
+    // console.log("cent hit mushroom");  
+    if (this.game.AllMushrooms.length === 0) {
+      return;
+    }
     let tempPos = this.pos;
     this.pos = newPos;
-
     let collided = this.game.AllMushrooms.some(
       (mushroom) => {
         return this.hasCollisonOccured(mushroom);
@@ -266,9 +440,55 @@ class Centipede extends MovingObject {
     this.pos = Util.centipedeNearestPos(this.pos);
   }
 
+  centipedePoisoned() {
+    // this.waspBounciness();
+    // super.move();
+    if (this.game.AllMushrooms.length === 0) {
+      return;
+    }
 
 
+    let collided = this.game.AllMushrooms.some(
+      (mushroom) => {
+        this.mushroom = mushroom;
+        return this.hasCollisonOccured(mushroom);
 
+      }, this);
+    if (this.mushroom.poisoned === true) {
+      // console.log("poisoned!!!!")
+      return true;
+    }
+    else {
+      return false;
+
+    }
+
+
+  }
+
+  dropDown() {
+    console.log("dropdown called");
+    // let newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
+    // while (!this.hitBottomOfCanvas(newPos)) {
+
+    let drop = this.game.allCentipedes.every((seg) => {
+      seg.pos[0] > 0
+    })
+
+    if (drop) {
+      console.log("moving down")
+      this.waspBounciness();
+      super.move();
+
+    }
+    else {
+      return;
+    }
+
+
+    // }
+
+  }
 
 }
 
