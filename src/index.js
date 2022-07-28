@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log("Hello World");
 
 	const canvas = document.getElementById("game-canvas");
+	canvas.onselectstart = function(){return false;}
+
+
+
 	canvas.height = Game.DIM_Y;
 	canvas.width = Game.DIM_X;
 
