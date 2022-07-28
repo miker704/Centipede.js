@@ -1,58 +1,105 @@
 body {
-    margin: 0;
-    background-color:grey;
-    font-family: Helvetica, sans-serif;
-  }
-  
-  .instructions {
-  
-    width: 410px;
-  
-  }
-  
-  .instructions ul {
-    list-style-type: decimal;
-  }
-  
- 
-  
-  .game-screen h1 {
-    text-align: center;
-  }
-  
-  canvas {
-    
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    cursor: none; 
-  }
-  
+  margin: 0;
+  background-color: grey;
+  font-family: Helvetica, sans-serif;
+}
+
+.instructions {
+  width: 410px;
+
+}
+
+.instructions ul {
+  list-style-type: decimal;
+}
+
+.instructions h2 {
+  text-decoration: underline;
+}
 
 
-  .socials {
-    /* width: 50px; */
-    /* height: 50px; */
-    display: flex;
-    align-items: center;
-    /* align-content: center; */
-    justify-content: center;
-   
+.game-screen h1 {
+  text-align: center;
+  user-select: none;
 
-  }
+}
 
-  .socials a{
-    text-decoration: none;
+canvas {
 
-  }
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  cursor: none;
+}
 
 
-  #icon{
-    flex-direction: row ;
-    color: black;
-    width: 50px;
-    height: 50px;
-  }
 
+.socials {
+  /* width: 50px; */
+  /* height: 50px; */
+  display: flex;
+  align-items: center;
+  /* align-content: center; */
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.socials a {
+  text-decoration: none;
+
+}
+
+
+#icon {
+  flex-direction: row;
+  color: black;
+  width: 50px;
+  /* height: 50px; */
+}
+
+
+
+.instructions {
+  border: 1px solid black;
+  padding: 10px;
+  width: 450px;
+  height: auto;
+  /* text-align: justify; */
+}
+
+
+.game-play-wikia {
+  float: right;
+
+  border: 1px solid black;
+  padding: 10px;
+  width: 450px;
+  height: auto;
+
+  /* text-align:justify; */
+
+  grid-column: end;
+
+}
+
+
+.contain {
+  user-select: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: 1px solid black;
+  
+}
+
+
+
+.circle {
+  background: lightblue;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
