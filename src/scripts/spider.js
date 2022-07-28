@@ -12,7 +12,7 @@ class Spider extends MovingObject {
             color: Util.randomColors(),
             game: options.game
         });
-       
+        // console.log(this.radius)
 
         this.direction = options.direction;
         this.maxVelocity = options.maxVelocity;
@@ -26,7 +26,7 @@ class Spider extends MovingObject {
     draw(ctx) {
         // Draw the background
         // Draw the spider
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = Util.randomColors();
         ctx.beginPath();
         ctx.arc(this.pos[0], this.pos[1] - 8, 8, 0, 2 * Math.PI);
         ctx.arc(this.pos[0], this.pos[1] + 8, 8, 0, 2 * Math.PI);
@@ -70,7 +70,6 @@ class Spider extends MovingObject {
         this.increaseVelocity();
     }
 
-
     currentDistanceFromPlayer(){
         let xCoord = this.pos[0] - this.game.zapper.pos[0];
         let yCoord = this.pos[1] - this.game.zapper.pos[1];
@@ -80,7 +79,18 @@ class Spider extends MovingObject {
     }
 
 
+
     hitByZapper() {
+        // console.log("removed spider");
+
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 21,
+                color: this.color
+            }
+        );
+
         let distanceForScore = this.currentDistanceFromPlayer();
         let rangeScore = 0;
         if(distanceForScore <=100){
@@ -92,7 +102,9 @@ class Spider extends MovingObject {
         else{
             rangeScore = 300;
         }
-     
+
+
+
         this.game.removeEntity(this);
         this.game.incrementScore(rangeScore);
 
