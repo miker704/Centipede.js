@@ -14,13 +14,22 @@ class SplashEffect extends MovingObject {
                 game: options.game,
                 vel: options.vel,
                 radius: 3,
-                color: Util.randomColors()
+                color: options.color
 
             }
         )
         this.gravitation = true;
 
     }
+
+
+    // move(){
+
+    //     if(this.game.allPowerUps.includes())
+
+
+
+    // }
 
 
 
