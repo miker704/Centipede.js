@@ -7,6 +7,7 @@ class ArmoredScorpion extends MovingObject {
         super(
             {
                 pos: options.pos,
+                // pos: [90,60],
                 radius: 36,
                 vel: [0, 0],
                 color: Util.randomColors(),
@@ -19,8 +20,8 @@ class ArmoredScorpion extends MovingObject {
         // and another exclusive to this game that tracks the player 
         // and has armor
 
-        this.armor = 10;
-        this.health = 10;
+        this.armor = 4;
+        this.health = 4;
 
         this.direction = options.direction;
         this.maxVelocity = options.maxVelocity;
@@ -37,13 +38,22 @@ class ArmoredScorpion extends MovingObject {
 
             }, this);
         if (collided) {
-          
             this.poisonMushrooms(this.mushroomTobePoisoned);
         }
     }
 
 
     hitByZapper() {
+
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 36,
+                color: this.color
+            }
+        );
+
+
         if (this.health === 0 && this.armor === 0) {
             this.game.removeEntity(this);
             //scorpion rewards most points
@@ -66,7 +76,6 @@ class ArmoredScorpion extends MovingObject {
     poisonMushrooms(mushroom) {
 
         if (Math.random() > 0.75) {
-        
             mushroom.poisonMushroom();
 
         }
