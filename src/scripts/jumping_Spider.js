@@ -99,13 +99,13 @@ class JumpingSpider extends MovingObject {
         let distanceForScore = this.currentDistanceFromPlayer();
         let rangeScore = 0;
         if (distanceForScore <= 100) {
-            rangeScore = 900;
+            rangeScore = 1200;
         }
         else if (distanceForScore > 100 && distanceForScore <= 200) {
-            rangeScore = 600;
+            rangeScore = 900;
         }
         else {
-            rangeScore = 300;
+            rangeScore = 600;
         }
 
 
