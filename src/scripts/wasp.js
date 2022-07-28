@@ -16,7 +16,7 @@ class Wasp extends MovingObject {
             }
         )
 
-        this.health = 4;
+        this.health = 3;
         this.direction = Math.random() * 2 * Math.PI;
         this.gravitation = true;
         this.rotation = 0.05;
@@ -81,22 +81,23 @@ class Wasp extends MovingObject {
 
     hitByZapper() {
         //wasp speed doubles if it is shot
-       
+        this.game.addSparks(
+            {
+                pos: this.pos.slice(),
+                amount: 12,
+                color: this.color
+            }
+        );
         if (this.health === 0) {
             this.game.removeEntity(this);
             this.game.incrementScore(500);
         }
-        else if (this.health === 3) {
-
-
-            this.acceleration = this.acceleration * 10;
-
-        }
+       
         else if (this.health === 2) {
            
             this.acceleration = this.acceleration * 15;
-            this.vel[0] *= 5;
-            this.vel[1] *= 5;
+            this.vel[0] *= 1.25;
+            this.vel[1] *= 1.25;
         }
         else if (this.health === 1) {
             this.acceleration = this.acceleration * 25;
