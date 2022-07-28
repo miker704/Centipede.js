@@ -17,15 +17,17 @@ class MovingObject {
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.stroke();
-       
+        // console.log("centipede being redrawn");
     }
 
     move () {
+
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
-       
-        this.gravitation && this.gravity();
+        // console.table(this.pos);
+        // this.gravityForce && this.gravity();
         // add outofbounds and remove function
+        this.gravitation && this.gravity();
         if(this.game.outOfBounds(this.pos)){
             // console.log("object has been removed: " + this.pos[0] + " "+ this.pos[1]);
             this.game.removeEntity(this);
@@ -40,34 +42,45 @@ class MovingObject {
     //aka radius of each object is greater than  the distance between them them 
     // a collat has occured 
     hasCollisonOccured (entity) {
+        // console.log("splay collison")
+
         let xCoord = this.pos[0] - entity.pos[0];
         let yCoord = this.pos[1] - entity.pos[1];
-        //distance formula
+        //using the distance formula
         let dist = Math.sqrt(Math.pow(xCoord, 2) + Math.pow(yCoord, 2));
         return dist < (this.radius + entity.radius);
     }
 
     // if something is hit by the bug zapper send it to the game remove function
     hitByZapper () {
-        
+        // console.log("removed mushroom on movingobject");
         this.game.removeEntity(this);
     }
 
+
+    hitBySplay(){
+
+    }
+
+
+
+
+
     // alter the velocity of a entity with some gravity force where they drop down 
     gravity () {
-         //this.acceleration || 0.2;
-         this.vel[1] += this.acceleration || 0.2;
+        //this.acceleration || 0.2;
+        this.vel[1] += this.acceleration || 0.2;
 
     }
 
     // if something hits the wall at a certain velocity bounce them back
     bounciness () {
+       
         let newX_coord = this.pos[0] + this.vel[0];
         if (newX_coord > Game.DIM_X || newX_coord < 0) {
             this.vel[0] *= -1;
         }
     }
-
 
     waspBounciness () {
        
@@ -82,6 +95,7 @@ class MovingObject {
 
     }
 
+  
 
 }
 
