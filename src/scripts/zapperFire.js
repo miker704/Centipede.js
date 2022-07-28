@@ -16,15 +16,18 @@ class ZapperFire {
         let zapAngle = (Math.PI - 0.1 *(this.number-1))/2;
 
         for(let i=0; i<this.number;i++){
-            let zapX = this.speed* Math.cos(zapAngle);
+            let zapX = this.speed * Math.cos(zapAngle);
             let zapY = (-this.speed) * Math.sin(zapAngle);
             zapAngle+=0.1;
             this.game.allBullets.push(new Bullet({
                 game: this.game,
-                pos: zapPositon,
-                vel : [zapX,zapY]
+                pos: zapPositon.slice(),
+                vel : [zapX,zapY],
+                splayable: (Math.random() > 0.99 ? true : false)
             }));
         }
+
+
 
     }
 
