@@ -14,8 +14,8 @@
 </head>
 
 <body>
-
-  <div class="game-screen">
+  <div class="contain">
+  <!-- <div class="game-screen">
 
 
     <h1>Centipede</h1>
@@ -23,52 +23,43 @@
     <canvas id="game-canvas" height="756" width="600"></canvas>
 
 
-  </div>
+  </div> -->
 
-  <div class="contain">
+  <!-- <div class="contain"> -->
     <div class="instructions">
       <h2>Controls</h2>
       <ul>
+        <li class = "warn">For the Best Experience in Your Browser Place the Zoom at 80% unless you are using a 4k screen or play in fullscreen mode in your brower (F11)</li>
         <li>Use the WASD, Arrow Keys or the Mouse to Move the Bug Zapper</li>
         <li> Press the Spacebar, Enter or Left-click with the mouse to fire the Zapper</li>
       </ul>
       <h2>Gameplay Instructions</h2>
       <ul>
         <li>Your Main object is to defeat the Centipede to progress to the next level.</li>
-        <li>There are other enemies as Well so watch out! There Spiders that will chase you endlessly among other
-          creatures </li>
+        <li>There are other enemies as Well so watch out! </li>
         <li>Getting touched by any of the bugs will cost you a life </li>
         <li>Lose all lives and its a game over! </li>
       </ul>
 
-      <h2>Further Gameplay Information and Tips</h2>
+      <h2> Gameplay Tips</h2>
       <ul>
-        <li>To Survive the longest killing just the bugs onscreen wont be enough, shooting the mushrooms will award
-          small
-          orbs similar in size to your bullets these are power ups</li>
-        <li>Do not Stop Moving there are enemies that can bounce around to the floor upon entering the game </li>
+        <li>To Survive the longest killing just the bugs onscreen wont be enough, shooting the mushrooms will award power ups</li>
+        <li>Dont Stop Moving there are enemies that can bounce to the floor upon entering the game </li>
         <li>Unlike the original game you can move past throughout the game field but be warned extra space does not give
-          you much saftey just a bit of breathing room </li>
+          you more saftey just more breathing room </li>
         <li>If you do loose a life you will be given a shield to protect you for around 8 seconds </li>
         <li>You will earn an Extra Life every 10000 points </li>
 
       </ul>
 
-
-    </div>
-
-
-
-
-    <div class="game-play-wikia">
-      <h2>Game Wikia </h2>
+      <!-- <h2>Game Wikia </h2> -->
       <ul>
         <h3>Power Ups</h3>
-        <p>There are 8 different powerups in game split into two different types Game Effects and Zapper Effects
+        <!-- <p>There are 8 different powerups in game split into two different types Game Effects and Zapper Effects
           shooting mushrooms will grant you a chance of spawning a power up, most Power ups have a time limit
-        </p>
+        </p> -->
 
-        <h3>Game Effect Power Ups</h3>
+        <!-- <h3>Game Effect Power Ups</h3> -->
 
         <li>Extra Life:</li>
         <div class="circle-extra-life"></div>
@@ -77,18 +68,17 @@
 
         <li>Clear Poison Mushrooms:</li>
         <div class="circle-ClearPoisonMushrooms"></div>
-        <p>Purifies the Field of all Poisoned Mushrooms and removes Poisoned Frenzy from enemies 
-          (Note if player dies Poison Mushrooms are Removed but enemies are Still Frenzied)</p>
+        <p>Purifies the Field of all Poisoned Mushrooms and removes Poisoned Frenzy from enemies</p>
 
         <li>Shield:</li>
         <div class="circle-Shield"></div>
-        <p>Shield Surrounds Player Protecting them (Dying also gives a Shield as well)</p>
+        <p>Shield Surrounds Player Protecting them (Dying also gives a Shield)</p>
 
         <li>Wipe Out:</li>
         <div class="circle-Wipeout"></div>
         <p>Destroys Everything</p>
 
-        <h3>Zapper Effect Power Ups</h3>
+        <!-- <h3>Zapper Effect Power Ups</h3> -->
 
         <li>Faster Fire Rate:</li>
         <div class="circle-FasterFireRate"></div>
@@ -104,91 +94,123 @@
 
         <li>Splay:</li>
         <div class="circle-Splay"></div>
-        <p>Increases Fire Rate by 100, and Bullet Speed by 10, unlocks the ability to use Splay which 
+        <p>Increases Fire Rate by 100, and Bullet Speed by 10, unlocks the ability to use Splay which
           fires a round that can either pass through all targets, as it leaves the field causes each
-          entity that comes near it to splay which launches bullets 360 degrees around each passed entity destroying multiple targets
-          or it can stick to an enemy and detonate  splaying around the enemy but much more fragments are generated if the target is destroyed
-          the orginal bullet will continue to move foward auto locking and sticking to any other targets and splaying till it leaves the field
+          entity that comes near it to splay which launches bullets 360 degrees around each passed entity destroying
+          multiple targets
+          or it can stick to an enemy and detonate splaying around the enemy but much more fragments are generated if
+          the target is destroyed
+          the orginal bullet will continue to move foward auto locking and sticking to any other targets and splaying
+          till it leaves the field
           note despite unlocking the ability it still has an exceedingly rare chance to trigger
         </p>
 
       </ul>
 
 
-      <h2>Enemies</h2>
+    </div>
+
+
+    <div class="game-screen">
+
+
+      <h1>Centipede</h1>
+  
+      <canvas id="game-canvas" height="756" width="600"></canvas>
+  
+  
+    </div>
+
+    <div class="game-play-wikia">
+      <!-- <h2>Game Wikia Cont. </h2> -->
+  
       <ul>
+        <h2>Enemies</h2>
         <li>Centipede:</li>
         <p>The main enemy of the game hitting it will cause it to split apart and move independently from the orginal
-          body 10 points per body segment 20 for head
-          killing a centipede completely will start a new level. Health: 4 Score:</p>
+          body killing it completely will start a new level. Health: 1 Score: 10 per Segment 20 for Head</p>
 
         <li>Spider:</li>
-        <p> The Spider will appear and hover towards the player it will track the player endlessly reagrdless of where
-          you go, Killing it closer to you rewards more points.
+        <p> The Spider will hover towards the player tracking them endlessly, Killing it closer to you rewards more points.
           Health: 1 Score: 300, 600 ,900 </p>
 
         <li>Flea:</li>
-        <p>Spawns Periodically drops from the ceiling down to the player spawning mushrooms on its way down hitting it
-          will cause it to move lightning quick to the bottom so be careful as the mushrooms it
-          spawns provide it cover as you shoot it! Health: 2 Score: 200 </p>
+        <p>Drops from the ceiling down to the floor spawning mushrooms on the way, hitting it
+          will cause it to drop faster to the bottom. Health: 2 Score: 200 </p>
 
         <li>Scorpion:</li>
-        <p>moves across the field poisoning any mushrooms it touches! Poisoned Mushrooms cause erratic behavior to
-          enemies that touch it ! Health: 1 Score: 1000</p>
+        <p>moves across the field poisoning any mushrooms it touches! Poisoned Mushrooms causes erratic behavior in enemies! Health: 1 Score: 1000</p>
 
 
         <li>Wasp:</li>
-        <p>Moves across the field similar to the centipede hitting it will cause it to move even faster so watch out!
+        <p>Moves across the field similar to the centipede hitting it causes it to move even faster!
           Health: 3 Score: 500 </p>
         <li>Jumping Spider:</li>
-        <p>Moves across the field in 45 degree angles be warned shooting it makes it bounce and
-          jump around faster can instantly pounce on a player as it enters the game!
+        <p>Moves across the field in 45 degree angles shooting it makes it jump around faster it can instantly pounce on a player as it enters the game!
           Armor: 1 Health: 3 Score: 600, 900, 1200</p>
         <li>Armored Scorpion:</li>
-        <p>Moves across the field tracking the player it can poison mushrooms even faster than the normal variant its
-          reccomended to
-          deal with it as soon as it enters the game as it will take multiple shots to put down
+        <p>Moves across the field tracking the player , poisons mushrooms even faster than normal
           Armor: 4 Health: 4 Score: 2000 </p>
         <li>Lightning Wasp:</li>
-        <p>Moves across the field in a diagonal like fashion shooting it will cause it to fly around bouncing off walls
+        <p>Moves across the field in a diagonal, shooting it will cause it to fly around bouncing off walls
           at an alarming rate
           Armor: 1 Health: 3 Score: 1000 </p>
 
         <h3>Other Entities</h3>
         <li>Mushrooms:</li>
-        <p> they are all over the field shoot them to give power ups, be careful as poisoned mushrooms
-          can
-          cause the centipede to drop down to the player
-          immediately and causes other enemies to move faster Mushrooms will spawn in periodically mushrooms can block
-          the player and enemies however not all enemies are blocked by mushroooms
-          a knowledgable player can manipulate the feild to spawn mushrooms to aid in their favor . Health: 4 Score:
+        <p> Shoot them to give power ups, poisoned mushrooms
+          can poison enemies causing erratic and dangerous behavior, respawns periodically, 
+          can block both player and enemy movement. Health: 4 Score:
           10 per hit, 50, 100 if Poisoned</p>
 
-
       </ul>
 
-      <h2>Further Gameplay Information and Tips</h2>
-      <ul>
-        <li>To Survive the longest killing just the bugs onscreen wont be enough, shooting the mushrooms will award
-          small
-          orbs similar in size to your bullets these are power ups</li>
-        <li>Do not Stop Moving there are enemies that can bounce around to the floor upon entering the game </li>
-        <li>Unlike the original game you can move past throughout the game field but be warned extra space does not give
-          you much saftey just a bit of breathing room </li>
-        <li>If you do loose a life you will be given a shield to protect you for around 8 seconds </li>
-        <li>You will earn an Extra Life every 10000 points </li>
-
-      </ul>
-
+     
 
     </div>
-  </div>
 
+
+    <div class="socials">
+
+      <a href="https://www.linkedin.com/in/michael-ramoutar" target="_blank">
+  
+        <i id="icon" class="fa-brands fa-linkedin fa-2xl"></i>
+  
+      </a>
+  
+  
+      <a href="https://github.com/miker704/" target="_blank">
+  
+        <i id="icon" class="fa-brands fa-github fa-2xl"></i>
+  
+      </a>
+  
+      <a href="https://github.com/miker704/Centipede.js" target="_blank">
+  
+        <i id="icon" class="fa-solid fa-spider fa-2xl"></i>
+      </a>
+  
+  
+      <a href="https://angel.co/u/michael-ramoutar-1" target="_blank">
+  
+        <i id="icon" class="fa-brands fa-angellist fa-2xl"></i>
+  
+      </a>
+  
+    </div>
+
+
+
+
+
+
+  </div>
+  
 
 </body>
 
 
-
+<!-- 
 <footer>
   <div class="socials">
 
@@ -222,7 +244,7 @@
 
 
 
-</footer>
+</footer> -->
 
 
 
