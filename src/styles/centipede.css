@@ -17,6 +17,10 @@ body {
   text-decoration: underline;
 }
 
+.instructions li{
+  /* line-height: 1.5px; */
+}
+
 
 .game-screen {
   grid-column: 3;
@@ -27,6 +31,7 @@ body {
 .game-screen h1 {
   text-align: center;
   user-select: none;
+  text-decoration: underline;
 
 }
 
@@ -51,8 +56,10 @@ canvas {
   justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  grid-column: 3;
-  border: 1px solid black;
+  /* grid-column: 3;
+  position: relative;
+  grid-area: 2 /span 6; */
+  /* border: 1px solid black; */
 }
 
 .socials a {
@@ -60,6 +67,27 @@ canvas {
 
 }
 
+
+.footer-box{
+  border: 1px solid black;
+  text-decoration: underline;
+
+}
+
+.name{
+  /* text-align: start; */
+  /* text-align: left; */
+  /* justify-content: flex-start; */
+  /* justify-content:left; */
+  /* align-items:flex-start ;
+  flex */
+  /* display: flex; */
+  /* flex-direction:column ; */
+  /* float: left; */
+  /* width:50px */
+  text-align: center;
+ padding-right: 15px;
+}
 
 #icon {
   flex-direction: row;
@@ -74,7 +102,7 @@ canvas {
   border: 1px solid black;
   padding: 10px;
   width: 350px;
-  height: 1200px;
+  height: 850px;
   font-size: 12px;
 
   float: left;
@@ -97,7 +125,7 @@ canvas {
   border: 1px solid black;
   padding: 10px;
   width: 350px;
-  height: 1200px;
+  height: 850px;
 
   /* width: auto;
   height: auto; */
@@ -131,7 +159,7 @@ canvas {
   border-radius: 50%;
   width: 12px;
   height: 12px;
-
+  /* padding: 1px; */
 
 }
 
