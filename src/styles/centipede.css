@@ -5,8 +5,8 @@ body {
 }
 
 .instructions {
-  width: 410px;
-
+  /* width: 410px; */
+  /* font-size: 10px; */
 }
 
 .instructions ul {
@@ -17,6 +17,12 @@ body {
   text-decoration: underline;
 }
 
+
+.game-screen {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+}
 
 .game-screen h1 {
   text-align: center;
@@ -45,7 +51,8 @@ canvas {
   justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
-
+  grid-column: 3;
+  border: 1px solid black;
 }
 
 .socials a {
@@ -66,28 +73,44 @@ canvas {
 .instructions {
   border: 1px solid black;
   padding: 10px;
-  width: 450px;
-  height: auto;
+  width: 350px;
+  height: 1200px;
+  font-size: 12px;
+
+  float: left;
+  grid-column: 1;
   /* text-align: justify; */
+  display: flex;
+  flex-direction: column;
+}
+
+
+.warn{
+  font-weight: bolder;
+  font-size: 14px;
 }
 
 
 .game-play-wikia {
   float: right;
-
+  font-size: 12px;
   border: 1px solid black;
   padding: 10px;
-  width: 450px;
-  height: auto;
+  width: 350px;
+  height: 1200px;
+
+  /* width: auto;
+  height: auto; */
 
   /* text-align:justify; */
 
   grid-column: end;
 
+
 }
 
 .game-play-wikia li {
- font-weight: bold;
+  font-weight: bold;
 
 }
 
@@ -97,14 +120,14 @@ canvas {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   border: 1px solid black;
-  
+
 }
 
 
 
 .circle-extra-life {
-  float:right;
-  background:#FFD700;
+  float: right;
+  background: #FFD700;
   border-radius: 50%;
   width: 12px;
   height: 12px;
@@ -113,7 +136,7 @@ canvas {
 }
 
 .circle-FasterFireRate {
-  float:right;
+  float: right;
   background: #B87333;
   border-radius: 50%;
   width: 12px;
@@ -121,16 +144,16 @@ canvas {
 }
 
 .circle-Shield {
-  float:right;
-  background:#00FFFF;
+  float: right;
+  background: #00FFFF;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .circle-ClearPoisonMushrooms {
-  float:right;
-  background:#2A0134;
+  float: right;
+  background: #2A0134;
   border-radius: 50%;
   width: 12px;
   height: 12px;
@@ -138,34 +161,33 @@ canvas {
 
 
 .circle-Wipeout {
-  float:right;
-  background:#880808;
+  float: right;
+  background: #880808;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .circle-Barrell {
-  float:right;
-  background:#32CD32;
+  float: right;
+  background: #32CD32;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .circle-Spread {
-  float:right;
-  background:#50C878;
+  float: right;
+  background: #50C878;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
 
 .circle-Splay {
-  float:right;
-  background:#B9F2FF;
+  float: right;
+  background: #B9F2FF;
   border-radius: 50%;
   width: 12px;
   height: 12px;
 }
-
