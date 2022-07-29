@@ -129,7 +129,7 @@ class Game {
         this.AllMushrooms = [];
         this.level = 1;
         // this.lives = 3;
-        this.lives = 5000;
+        this.lives = 10;
 
         this.score = 0;
         this.playerBugZapper = [];
@@ -531,14 +531,14 @@ class Game {
 
                 })
             );
-            this.spawner.push(
-                setTimeout(
-                    this.addSpiders.bind(this),
-                    Math.max(200 - this.level, 20) * 100
-                )
-            )
         }
-
+        
+        this.spawner.push(
+            setTimeout(
+                this.addSpiders.bind(this),
+                Math.max(200 - this.level, 20) * 100
+            )
+        )
 
     }
 
@@ -853,7 +853,7 @@ Game.BackGroundColor = "#000000";
 // Game.BackGroundColor = "#FFFFFF";
 // Game.BackGroundColor = Util.randomColors();
 
-
+//475/598
 Game.DIM_X = 600;
 Game.DIM_Y = 756;
 // Game.DIM_X = 600;
