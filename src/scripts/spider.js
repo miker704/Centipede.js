@@ -22,7 +22,7 @@ class Spider extends MovingObject {
     }
 
 
-    // drawing these things is taking so mush time
+    // drawing these things is taking so much time
     draw(ctx) {
         // Draw the background
         // Draw the spider
