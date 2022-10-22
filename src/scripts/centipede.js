@@ -467,7 +467,7 @@ class Centipede extends MovingObject {
   }
 
   dropDown() {
-    console.log("dropdown called");
+    // console.log("dropdown called");
     // let newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
     // while (!this.hitBottomOfCanvas(newPos)) {
 
@@ -476,7 +476,7 @@ class Centipede extends MovingObject {
     })
 
     if (drop) {
-      console.log("moving down")
+      // console.log("moving down")
       this.waspBounciness();
       super.move();
 
