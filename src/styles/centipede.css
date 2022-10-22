@@ -6,10 +6,10 @@ body {
 }
 
 
-.instructions {
-  /* width: 410px; */
-  /* font-size: 10px; */
-}
+/* .instructions {
+   width: 410px; 
+  font-size: 10px; 
+} */
 
 .instructions ul {
   list-style-type: decimal;
@@ -19,9 +19,9 @@ body {
   text-decoration: underline;
 }
 
-.instructions li{
-  /* line-height: 1.5px; */
-}
+/* .instructions li{
+   line-height: 1.5px;
+} */
 
 
 .game-screen {
