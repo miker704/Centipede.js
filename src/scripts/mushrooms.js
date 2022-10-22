@@ -134,7 +134,7 @@ class Mushrooms extends MovingObject {
         if (entity instanceof BugZapper) {
             entity.pos[0] -= entity.vel[0];
             entity.pos[1] -= entity.vel[1];
-            console.log("currently collat with mushrooms");
+            // console.log("currently collat with mushrooms");
 
         }
 
