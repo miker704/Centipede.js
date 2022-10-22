@@ -52,7 +52,7 @@ class PowerUps extends MovingObject {
     }
 
     activatePowerup(typeOfPowerUp, powerUpName) {
-        console.log("power up activation called");
+        // console.log("power up activation called");
         switch (typeOfPowerUp) {
 
             case "zapperEffect":
@@ -115,15 +115,15 @@ class PowerUps extends MovingObject {
      
 
         for (let i = 0; i < attributes.length; i++){
-            console.log("pairs",attributes[i],effects[i]);
+            // console.log("pairs",attributes[i],effects[i]);
 
             this.game.zapper.zapperBarrell[attributes[i]]+=effects[i];
-            console.log("zapperbarrel props : ", this.game.zapper.zapperBarrell )
+            // console.log("zapperbarrel props : ", this.game.zapper.zapperBarrell )
 
             if(attributes[i] === 'number'){
                 setTimeout(function(){
                     this.game.zapper.zapperBarrell[attributes[i]]-=effects[i];
-                    console.log("removed power")
+                    // console.log("removed power")
                 }.bind(this),20000)
             }
 
@@ -145,10 +145,10 @@ class PowerUps extends MovingObject {
     collisonDetection(entity) {
 
         if (entity instanceof BugZapper) {
-            console.log("collison with powerup")
+            // console.log("collison with powerup")
 
             if (this.typeOfPowerUp === 'gameEffect') {
-                console.log("hello")
+                // console.log("hello")
                 this.activatePowerup(this.typeOfPowerUp, this.powerUpName);
             }
             else if (this.typeOfPowerUp === 'zapperEffect') {
