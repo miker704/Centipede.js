@@ -93,14 +93,14 @@ class Game {
         this.xEnd = (this.xDim / 2) + 12.5 * this.squareSize;
         // Game.DIM_X= this.xDim;
         // Game.DIM_Y = this.yDim;
-        console.log("xDim " + this.xDim);
-        console.log("yDim " + this.yDim);
-        console.log("xstart " + this.xStart);
-        console.log("ystar " + this.yStart);
-        console.log("xend " + this.xEnd);
-        console.log("yend " + this.yEnd);
-        console.log(this.squareSize);
-        console.log(this.squareSize);
+        // console.log("xDim " + this.xDim);
+        // console.log("yDim " + this.yDim);
+        // console.log("xstart " + this.xStart);
+        // console.log("ystar " + this.yStart);
+        // console.log("xend " + this.xEnd);
+        // console.log("yend " + this.yEnd);
+        // console.log(this.squareSize);
+        // console.log(this.squareSize);
 
 
     }
@@ -111,10 +111,10 @@ class Game {
         var ySpace = window.innerHeight;
 
 
-        console.log("game x " + Game.DIM_X);
-        console.log("game y " + Game.DIM_Y);
-        console.log("game xSpace " + xSpace);
-        console.log("game ySpace " + ySpace);
+        // console.log("game x " + Game.DIM_X);
+        // console.log("game y " + Game.DIM_Y);
+        // console.log("game xSpace " + xSpace);
+        // console.log("game ySpace " + ySpace);
 
 
         var yLimitedSize = Math.floor(ySpace / 30);
@@ -535,7 +535,7 @@ class Game {
         
         this.spawner.push(
             setTimeout(
-                this.addSpiders.bind(this),
+                this.addSpider.bind(this),
                 Math.max(200 - this.level, 20) * 100
             )
         )
