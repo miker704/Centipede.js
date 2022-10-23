@@ -130,7 +130,7 @@ class Spider extends MovingObject {
     }
 
     rotation(){
-        let rotationAmount = Math.min(Math.abs(this.findPlayer()-this.direction),Math.PI/8);
+        let rotationAmount = Math.min(Math.abs(this.findPlayer()-this.direction),Math.PI/16);
         this.direction+= this.findPlayer()> this.direction ? rotationAmount : (rotationAmount*-1);
     }
 
