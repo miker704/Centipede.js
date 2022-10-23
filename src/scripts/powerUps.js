@@ -43,6 +43,7 @@ class PowerUps extends MovingObject {
         this.powerUpEffects = {
             'FasterFireRate': [10, 100],
             'Splay': [10, 100],
+            // 'Splay': [0, 0],
             'Spread': [4],
             'Barrell': [1]
         }
@@ -110,6 +111,11 @@ class PowerUps extends MovingObject {
         //     'Spread':[4], 
         //     'Barrell':[1]
         // }
+
+        if(powerUpName === 'Splay'){
+            this.game.unlockSplay();
+        }
+
         let effects = Object.values(this.powerUpEffects[powerUpName]);
         let attributes = Object.values(this.powerUpAttributes[powerUpName]);
      
