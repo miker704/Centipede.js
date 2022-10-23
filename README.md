@@ -10,7 +10,7 @@ The main object for the player is to destroy the Centipede in order to progress 
 This Goal of this project was for me to produce the orginal 1981 Atari game using pure Javascript and utilizing the HtML Canvas API to render and draw the games assets. This was achieved but I decided to take it further by adding my own custom features along with it including power ups, game mechanics new enemies and sproadic difficulty. I chose this project specifically due to the fact its one of the least recreated games, scarce amount of tutorials and resource forcing me to immplement everything on my own. Which resulted in a extremely difficult time as ever asset was drawn on the Canvas by hand, and all the algorithms for enemy movement, AI, ad behaviors all required a huge amount of advanced mathematics.
 
 ***
-### <h3 style="color:red">**Warning - Its out of good heart, I should warn those that suffer from epilepsy/epileptic seizures this game does have alot of flashing colors and lights.**</h3>
+### <strong style="color:red">**Warning - Its out of good heart, I should warn those that suffer from epilepsy/epileptic seizures this game does have alot of flashing colors and lights.**</strong>
 ***
 
 
