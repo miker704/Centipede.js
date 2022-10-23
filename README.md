@@ -27,7 +27,6 @@ This Goal of this project was for me to produce the orginal 1981 Atari game usin
 ## Major Features and Code Highlights
   
 ### Centipede Movement
-***
 ![Centipede Movement](./src/assets/readme_resources/centipede_movement.gif)
 
 Creating the Centipede movement was actually pretty difficult, I have an copy of the orginal game and played it to analyze the movement of the Centipede.
@@ -175,7 +174,6 @@ current state of the code base the requirments for the canvas size and the calul
 ```
 
 ### Spider Movement Using Player Tracking
-***
 ![Spider Movement](./src/assets/readme_resources/spider_movement2.gif)
 
 There are many different Algorithms that I created for the games entities one of the most impressive many found was the Player tracking alogrithim of the
@@ -268,7 +266,6 @@ class Spider extends MovingObject {
 ```
 
 ### Complex Power Ups - Splay Bullets
-***
 
 There are many different power ups in the game from the simple extra life, and shield to the powerful wipeout that clears everything off the game field, that seems like the most powerful power up right? Well ... Theres a power up called Splay which is a bullet modifier that is so powerful that orginally it dropped the games frame rate to single digits for extended periods of time. Which led to introduce an extremely low proc chance about less than 0.01% even after attaining the power up to prevent the user from spamming it. In general a Splay bullet is a bullet that can be temporarily
 unlocked for a short amount of time by picking up the splay power up. When firing there is a 0.01% chance for a bullet to spawn as a splay which is a 
