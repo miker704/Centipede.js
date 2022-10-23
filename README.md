@@ -10,9 +10,10 @@ The main object for the player is to destroy the Centipede in order to progress 
 This Goal of this project was for me to produce the orginal 1981 Atari game using pure Javascript and utilizing the HtML Canvas API to render and draw the games assets. This was achieved but I decided to take it further by adding my own custom features along with it including power ups, game mechanics new enemies and sproadic difficulty. I chose this project specifically due to the fact its one of the least recreated games, scarce amount of tutorials and resource forcing me to immplement everything on my own. Which resulted in a extremely difficult time as ever asset was drawn on the Canvas by hand, and all the algorithms for enemy movement, AI, ad behaviors all required a huge amount of advanced mathematics.
 
 ***
-### **Warning - Its out of good heart, I should warn those that suffer from epilepsy/epileptic seizures this game does have alot of flashing colors and lights.**
+### <h3 style="color:red">**Warning - Its out of good heart, I should warn those that suffer from epilepsy/epileptic seizures this game does have alot of flashing colors and lights.**</h3>
 ***
-***
+
+
 ## Technologies, Libraries, and APIs
 - Vanilla ```JavaScript```
 - ```HTML5```
@@ -24,10 +25,14 @@ This Goal of this project was for me to produce the orginal 1981 Atari game usin
 ***
 
 ## Major Features and Code Highlights
-***
+***   
+  
+
+<br/><br/>  
 
 ### Centipede Movement
 ***
+
 
 ![Centipede Movement](./src/assets/readme_resources/centipede_movement.gif)
 
@@ -175,10 +180,8 @@ current state of the code base the requirments for the canvas size and the calul
 
 ```
 
-
-### Player Tracking - Spider Movement
+### Spider Movement Using Player Tracking
 ***
-
 ![Spider Movement](./src/assets/readme_resources/spider_movement2.gif)
 
 There are many different Algorithms that I created for the games entities one of the most impressive many found was the Player tracking alogrithim of the
@@ -432,7 +435,7 @@ I would like to acknowledge that the following were invaluable to understanding 
 ***
 
 ### Future
-In the future I will be updating this project, providing fixes and an overhaul of the entire application of **Centipede.js**
+In the future I will be updating this project, providing fixes and an overhaul of the entire project of **Centipede.js**
 
 #### These include:
 * The Centipede, and other Entity movement utilize a precise amount of space of the canvas that is perfectly divisible by the entire canvas
