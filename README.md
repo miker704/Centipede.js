@@ -27,7 +27,7 @@ This Goal of this project was for me to produce the orginal 1981 Atari game usin
 ## Major Features and Code Highlights
   
 ### Centipede Movement
-![Centipede Movement](./src/assets/readme_resources/centipede_movement.gif)
+![Centipede Movement](./src/assets/readme_resources/centipede_movement_mini.gif)   
 
 Creating the Centipede movement was actually pretty difficult, I have an copy of the orginal game and played it to analyze the movement of the Centipede.
 Being that also Recreations of this game are very little I was still able to encounter the some pieces of assembly source code for the centipede's movement from the orginal game. Using my prior knowledge of writing Assembly Language in College I was able to put together most of the movement algorithm of the Centipede together, albeit I had to write a majority of the code that was missing in additon conform the code to operate within the 
@@ -273,7 +273,7 @@ green bullet that can behave in two different ways but regardless of behavior th
 
 
 Behavior 1 Phase Through Effect : Splay Travels through targets where anything that is hit or within the hit box radius of the splay will explode when the splay leaves the canvas this effect was inspired by the radius effect the BFG 9000 uses from Doom. <br/><br/>
-![Splay Phase](./src/assets/readme_resources/splay_phase_1.gif)  
+![Splay Phase](./src/assets/readme_resources/splay_phase_1.gif)
 
 Behavior 2 Phase Through Effect : Splay Travels and homes in an sticks to the closes target exploding after a few seconds before traveling ahead and sticking to the next target this continues till it leaves the map. <br/><br/>  
 
