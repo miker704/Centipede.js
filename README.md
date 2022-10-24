@@ -30,11 +30,11 @@ This Goal of this project was for me to produce the orginal 1981 Atari game usin
 ### Centipede Movement
 ![Centipede Movement](./src/assets/readme_resources/centipede_movement_1_mini.gif)   
 
-Creating the Centipede movement was actually pretty difficult, I have an copy of the orginal game and played it to analyze the movement of the Centipede.
-Being that also Recreations of this game are very little I was still able to encounter the some pieces of assembly source code for the centipede's movement from the orginal game. Using my prior knowledge of writing Assembly Language in College I was able to put together most of the movement algorithm of the Centipede together, albeit I had to write a majority of the code that was missing in additon conform the code to operate within the 
+Creating the Centipede movement was actually pretty difficult, I have a copy of the orginal game and played it to analyze the movement of the Centipede.
+Being that also recreations of this game are very little I was still able to encounter pieces of assembly source code for the centipede's movement from the orginal game. Using my prior knowledge of writing Assembly Language in College I was able to put together most of the movement algorithm of the Centipede together, albeit I had to write a majority of the code that was missing in additon conform the code to operate within the 
 canvas, something that is not accounted for in the orginal game. I used the movement algorithm of the snake from the classic snake game and attempted to 
-modifiy it to be controlled by the computer instead of the player. There are many problems that arose with writing the movement algorithm at the 
-current state of the code base the requirments for the canvas size and the calulations for each movement of the centipede are required to be so mathematically  precise in order to operate correctly or else bugs (no pun intended) such as the centipede getting stuck, flying of the canvas, refusing to move or at times appear normal only to leave the canvas on turning itself in a new direction never to return. A very mysterious bug included dealing with memory leakage resulting in a centipede of infinite length at level 3. The movement algorithm is the majority of the centipede's code due to the centipede's complex abilities. Whenever the Centipede encounters a wall it must turn either up or down in order to move to the next row of the canvas the same applies when walking into a group of mushrooms the centipede navigates between mushrooms using collision detection if it hits a mushroom it decides whether to move up or down sometimes slithering through groups of mushrooms in all directions which allows it to skip walking through multiple rows of the canvas fully in order to reach to the player. 
+modifiy it to be controlled by the computer. There are many problems that arose with writing the movement algorithm at the 
+current state of Centipede.js itself, the canvas size and the calulations for the movement of the centipede are required to be so mathematically  precise in order to operate correctly. Many bugs (no pun intended) arose due to inprecise calculations such as the centipede refusing to move, getting stuck, flying of the canvas, or randomly leaving the canvas never to return. A very mysterious bug included dealing with memory leakage resulting in a centipede of infinite length at level 3. The movement algorithm is the majority of the centipede's code due to the centipede's complex abilities. Whenever the Centipede encounters a wall it must turn either up or down in order to move to the next row of the canvas the same applies when walking into a group of mushrooms the centipede navigates between mushrooms using collision detection if it hits a mushroom it decides whether to move up or down sometimes slithering through groups of mushrooms in all directions which allows it to skip walking through multiple rows of the canvas fully in order to reach to the player. 
 
 ```.js
 
@@ -256,7 +256,7 @@ class Spider extends MovingObject {
         // which will either yield linear or circular movement
 
         let rotationAmount = Math.min(Math.abs(this.findPlayer()-this.direction),Math.PI/8);
-        this.direction+= this.findPlayer()> this.direction ? rotationAmount : (rotationAmount*-1);
+        this.direction+= this.findPlayer() > this.direction ? rotationAmount : (rotationAmount*-1);
     }
 
 
@@ -273,10 +273,13 @@ unlocked for a short amount of time by picking up the splay power up. When firin
 green bullet that can behave in two different ways but regardless of behavior the splay is an explosive round that 'splays' out a large amount of bullets from the hit zone in 8 different directions 60 degrees per direction , basically the shape of a circle.  
 
 
-Behavior 1 Phase Through Effect : Splay Travels through targets where anything that is hit or within the hit box radius of the splay will explode when the splay leaves the canvas this effect was inspired by the radius effect the BFG 9000 uses from Doom. <br/><br/>
+Behavior 1 - Phase Through Effect:  
+Splay Travels through targets where any entities hit or within the radius of the splay will explode shooting red bullets everywhere when the splay leaves the canvas. The radius effect was inspired by the radius effect the BFG 9000 uses from Doom where projectile electrifies nearby enemies. <br/><br/>
 ![Splay Phase](./src/assets/readme_resources/splay_phase_1_mini.gif)
 
-Behavior 2 Phase Through Effect : Splay Travels and homes in an sticks to the closes target exploding after a few seconds before traveling ahead and sticking to the next target this continues till it leaves the map. <br/><br/>  
+Behavior 2 - Sticky Effect:  
+Splay Travels and homes in and sticks to the closest entity, the splay detonates causing the stuck entity to emit a large amount of red bullets in 8 different directions 360 degrees around the stuck target hitting everything around it. There is also a chance that the initial splay bullet after 
+exploding to travel foward again sticking to the next target and explode this can chain multiple times it leaves the map. <br/><br/>  
 
 ![Splay Sticky](./src/assets/readme_resources/Splay_sticky.gif)
 
@@ -346,14 +349,11 @@ class Bullet extends MovingObject {
             this.color = '#50C878';
             this.radius = 8;
             if (entity instanceof Mushrooms ||
-                entity instanceof Spider ||
-                entity instanceof Centipede ||
-                entity instanceof Scorpion ||
-                entity instanceof Flea ||
-                entity instanceof ArmoredScorpion ||
-                entity instanceof Wasp ||
-                entity instanceof JumpingSpider ||
-                entity instanceof LightningWasp
+
+                ...
+				
+                entity instanceof Centipede 
+             
             ) {
                 this.stuckWithSplay = true;
                 if (this.splayable === true && this.stuckWithSplay === true) {
@@ -388,14 +388,10 @@ class Bullet extends MovingObject {
 
         else if (this.splayShotDelete === true || this.childOfSplay === true) {
             if (entity instanceof Mushrooms ||
-                entity instanceof Spider ||
-                entity instanceof Centipede ||
-                entity instanceof Scorpion ||
-                entity instanceof Flea ||
-                entity instanceof ArmoredScorpion ||
-                entity instanceof Wasp ||
-                entity instanceof JumpingSpider ||
-                entity instanceof LightningWasp
+			
+				...
+
+                entity instanceof Spider 
             ) {
                 entity.hitByZapper(); // call to remove entity
                 this.game.removeEntity(this); // remove the bullet from the game 
