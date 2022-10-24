@@ -1,5 +1,6 @@
 # Centipede.js
 ### <a href="https://miker704.github.io/Centipede.js/" target="_blank">Live Link</a>
+![Centipede.js Gameplay](./src/assets/readme_resources/gameplay.gif)
 
 <a href="https://miker704.github.io/Centipede.js/" target="_blank">**Centipede.js**</a> is a custom recreation of the classic 1981 Atari game Centipede
 featuring not only the features of the orginal game but various custom featues including new enemies, behaviors, power ups, and game mechanics.
@@ -27,7 +28,7 @@ This Goal of this project was for me to produce the orginal 1981 Atari game usin
 ## Major Features and Code Highlights
   
 ### Centipede Movement
-![Centipede Movement](./src/assets/readme_resources/centipede_movement_mini.gif)   
+![Centipede Movement](./src/assets/readme_resources/centipede_movement_1_mini.gif)   
 
 Creating the Centipede movement was actually pretty difficult, I have an copy of the orginal game and played it to analyze the movement of the Centipede.
 Being that also Recreations of this game are very little I was still able to encounter the some pieces of assembly source code for the centipede's movement from the orginal game. Using my prior knowledge of writing Assembly Language in College I was able to put together most of the movement algorithm of the Centipede together, albeit I had to write a majority of the code that was missing in additon conform the code to operate within the 
@@ -174,7 +175,7 @@ current state of the code base the requirments for the canvas size and the calul
 ```
 
 ### Spider Movement Using Player Tracking
-![Spider Movement](./src/assets/readme_resources/spider_movement2.gif)
+![Spider Movement](./src/assets/readme_resources/spider_movement_2_mini.gif)
 
 There are many different Algorithms that I created for the games entities one of the most impressive many found was the Player tracking alogrithim of the
 Spider. The game features two types of spiders the normal and the Jumping Spider. The Jumping Spider retains most of the orginal games algorithm for movement although more chaotic. While the normal spider uses a player tracking algorithm to serve as its movement system. Once the spider enters the game it quickly identifies the player and ventures towards them able to track them , rotating and turning in any direction, chasing the player endlessly. It does this by estimating the radius and overall distance between it and the closest player using the Distance Formula <--- remember that from highschool ? it scans for the nearest entity that is a bugzapper (Player) and begins to move toward that direction. The higher the level the player is on the faster the spider's tracking becomes. 
@@ -273,12 +274,11 @@ green bullet that can behave in two different ways but regardless of behavior th
 
 
 Behavior 1 Phase Through Effect : Splay Travels through targets where anything that is hit or within the hit box radius of the splay will explode when the splay leaves the canvas this effect was inspired by the radius effect the BFG 9000 uses from Doom. <br/><br/>
-![Splay Phase](./src/assets/readme_resources/splay_phase_1.gif)
+![Splay Phase](./src/assets/readme_resources/splay_phase_1_mini.gif)
 
 Behavior 2 Phase Through Effect : Splay Travels and homes in an sticks to the closes target exploding after a few seconds before traveling ahead and sticking to the next target this continues till it leaves the map. <br/><br/>  
 
-![Splay Stick1](./src/assets/readme_resources/splay_stick_1.gif)
-![Splay Stick1](./src/assets/readme_resources/splay_stick_2.gif)
+![Splay Sticky](./src/assets/readme_resources/Splay_sticky.gif)
 
 
 ```.js
