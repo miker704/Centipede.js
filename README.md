@@ -178,11 +178,10 @@ current state of Centipede.js itself, the canvas size and the calulations for th
 ![Spider Movement](./src/assets/readme_resources/spider_movement_2_mini.gif)
 
 There are many different Algorithms that I created for the games entities one of the most impressive many found was the Player tracking alogrithim of the
-Spider. The game features two types of spiders the normal and the Jumping Spider. The Jumping Spider retains most of the orginal games algorithm for movement although more chaotic. While the normal spider uses a player tracking algorithm to serve as its movement system. Once the spider enters the game it quickly identifies the player and ventures towards them able to track them , rotating and turning in any direction, chasing the player endlessly. It does this by estimating the radius and overall distance between it and the closest player using the Distance Formula <--- remember that from highschool ? it scans for the nearest entity that is a bugzapper (Player) and begins to move toward that direction. The higher the level the player is on the faster the spider's tracking becomes. 
-This process starts off when the spider is spawned it is given a threshold for its ```maxVelocity``` for
-the current level as the ```move()``` function is called the functions ```rotate()``` and ```increaseVelocity()``` are called constantly to
-adjust the spiders current position and movement speed  ```rotate()``` when called calls another function ```findPlayer()``` which calculates the distance between it and the nearest bugzapper finding its current position and returning either ```angleOfTrajectory``` or ```this.direction```. Depending on the players position it decides on how to move for example if the player is close to the edges of the canvas the spider movement changes to use ```this.direction``` which makes the spider move towards to player in linear fashion while if the player is further within the map it uses ```angleOfTrajectory``` which allows the spider to move in a circular arc to the player. These movement adjustments
-are needed to prevent the spider from going out of bounds when attacking the player. When these calculations are returned they are stored in the ```rotationAmount``` variable and the current direction is compared to the calculations of ```findPlayer()``` if it is greater than the current direction then it uses ```rotationAmount``` else it uses ```(rotationAmount*-1)``` to rotate the spider towards the players direction before calling ```increaseVelocity()``` to quickly close the gap between it and the player.
+Spider. The game features two types of spiders the normal and the Jumping Spider. The Jumping Spider retains most of the orginal games algorithm for movement although more chaotic, while the normal spider uses a player tracking algorithm to move. Once the spider enters the game it quickly identifies the player and ventures towards them, rotating and turning in any direction, chasing the player endlessly. It does this by estimating the radius and overall distance between it and the closest player using the Distance Formula <--- remember that from highschool ? it scans for the nearest entity that is a bugzapper (Player) and begins to move toward in that direction. The higher the game level the faster the spider's tracking becomes. 
+This process starts off when the spider is spawned it is given a threshold for its ```maxVelocity``` for the current level. The ```move()``` function is called the functions ```rotate()``` and ```increaseVelocity()``` are invoked constantly to adjust the spiders current position and movement speed.  ```rotate()``` when called calls another on  another function ```findPlayer()``` which calculates the distance between it and the nearest bugzapper. This returns either an ```angleOfTrajectory``` or a modified  ```this.direction``` which is then stored in ```rotationAmount``` the spider's current
+direction is then compared to the current calulations of ```findPlayer()``` depending if the spider's or the player's current direction is greater than the other ```rotationAmount``` will then be +/- to the current spider movement direction which will either make the spider move in a linear fashion
+or in circular arcs towards the player. The function ```increaseVelocity()``` is called immediately to accelerate the spider towards to player.
 
 
 ```.js
@@ -285,29 +284,8 @@ exploding to travel foward again sticking to the next target and explode this ca
 
 
 ```.js
-class Bullet extends MovingObject {
-    constructor(options) {
 
-        super({
-            pos: options.pos,
-            vel: options.vel,
-            game: options.game,
-            radius: options.radius || Bullet.RADIUS,
-            color: '#FFFFFF'
-        });
-
-        this.splayable = options.splayable;
-        this.otherColor = options.otherColor;
-        this.childOfSplay = false;
-        this.stuckWithSplay = false;
-
-        if (this.otherColor) {
-            this.color = this.otherColor;
-        }
-
-        this.splayShotDelete = true;
-        this.splayChoice = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
-    }
+//main algorthims from the Bullet Class for the Splay Round
 
     callFrag(entity) {
 
@@ -349,9 +327,9 @@ class Bullet extends MovingObject {
             this.color = '#50C878';
             this.radius = 8;
             if (entity instanceof Mushrooms ||
-
-                ...
 				
+                ...
+
                 entity instanceof Centipede 
              
             ) {
@@ -399,11 +377,6 @@ class Bullet extends MovingObject {
         }
     }
 
-}
-
-Bullet.SPEED = 15;
-Bullet.RADIUS = 6;
-export default Bullet;
 
 ```
 
