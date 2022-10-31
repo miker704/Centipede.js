@@ -50,6 +50,8 @@ class Scorpion extends MovingObject {
 
         this.game.removeEntity(this);
         //scorpion rewards most points
+        this.game.sfx.scorpion();
+        this.game.sfx.killSpider();
         this.game.incrementScore(1000);
     }
 
