@@ -57,7 +57,8 @@ class ArmoredScorpion extends MovingObject {
         if (this.health === 0 && this.armor === 0) {
             this.game.removeEntity(this);
             //scorpion rewards most points
-
+            this.game.sfx.armoredScorpion();
+            this.game.sfx.killSpider();
             this.game.incrementScore(2000);
         }
 
