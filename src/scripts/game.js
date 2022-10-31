@@ -491,7 +491,7 @@ class Game {
             vel: [(5 + this.level * 0.5), 0],
             acceleration: (0.05 + this.level * 0.01) * 1,
         }));
-
+        this.sfx.addBodySegment();
     }
 
     bodyPartsEmpty() {
