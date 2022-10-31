@@ -74,6 +74,8 @@ class LightningWasp extends MovingObject {
 
         if (this.health === 0 && this.armor === 0) {
             this.game.removeEntity(this);
+            this.game.sfx.lightWasp2();
+            this.game.sfx.killSpider();
             this.game.incrementScore(1000);
         }
        
