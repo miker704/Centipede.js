@@ -24,10 +24,11 @@ class ZapperFire {
                 pos: zapPositon.slice(),
                 vel : [zapX,zapY],
                 splayable: (Math.random() > 0.99 ? true : false)
+
             }));
         }
 
-
+        this.game.sfx.fire();
 
     }
 
