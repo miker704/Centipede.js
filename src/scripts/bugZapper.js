@@ -20,7 +20,7 @@ import PowerUps from "./powerUps.js";
 
 class BugZapper extends MovingObject {
 
-    constructor(options) {
+    constructor (options) {
 
 
         super({
@@ -42,7 +42,7 @@ class BugZapper extends MovingObject {
         this.hasShield = false;
     }
 
-    fireZap() {
+    fireZap () {
 
         this.game.addEntities(new Bullet({
             game: this.game,
@@ -54,7 +54,7 @@ class BugZapper extends MovingObject {
     }
 
 
-    draw(ctx) {
+    draw (ctx) {
         let tempRadius = (this.radius / 3) * 5;
         let x = 20;
         let y = 20;
@@ -79,7 +79,7 @@ class BugZapper extends MovingObject {
         if (this.hasShield === true) {
             ctx.strokeStyle = Util.randomColors();
             ctx.beginPath();
-            ctx.arc(this.pos[0], this.pos[1], tempRadius*2, 0, 2 * Math.PI, false);
+            ctx.arc(this.pos[0], this.pos[1], tempRadius * 2, 0, 2 * Math.PI, false);
             ctx.stroke();
         }
 
@@ -87,7 +87,7 @@ class BugZapper extends MovingObject {
     }
 
 
-    power(impulse) {
+    power (impulse) {
         this.vel[0] += impulse[0];
         this.vel[1] += impulse[1];
         // console.table(this.vel);
@@ -103,7 +103,7 @@ class BugZapper extends MovingObject {
 
     }
 
-    slowZapper(distance) {
+    slowZapper (distance) {
         distance = distance || 0.02;
         for (let i = 0; i < 2; i++) {
             //check if velocity reached a negative number
@@ -121,7 +121,7 @@ class BugZapper extends MovingObject {
     // according to the orginal games code in assembly in seems that 
     // the movement per key press if using keys it moves the length
     //of the with of a mushroom
-    move() {
+    move () {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
         //figured out that in moveobject class this function is overided
@@ -172,7 +172,7 @@ class BugZapper extends MovingObject {
     // object of enemy type the player loses a life
     // if they collide with a mushroom they cannot move throw
     //it
-    collisonDetection(entity) {
+    collisonDetection (entity) {
 
         if ((entity instanceof Spider || entity instanceof Centipede ||
             entity instanceof Flea || entity instanceof Scorpion ||
@@ -191,10 +191,15 @@ class BugZapper extends MovingObject {
 
             if (this.game.lives > 0) {
                 // set timer for shield
-                setTimeout(function(){
+                setTimeout(function () {
                     this.hasShield = false;
 
-                }.bind(this),8000);
+                }.bind(this), 8000);
+                this.game.sfx.loseLife();
+
+            }
+            else{
+                this.game.sfx.gameOver();
             }
 
 
