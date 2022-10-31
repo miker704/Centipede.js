@@ -334,6 +334,7 @@ class Centipede extends MovingObject {
     );
 
     this.game.removeEntity(this);
+    this.game.sfx.killBodySegment();
     this.game.incrementScore(100);
     this.game.addMushroomHere(
       {
