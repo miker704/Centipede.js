@@ -406,12 +406,10 @@ function will cause a need to re-factor/code the majority of the code base.
 * Centipede Movement: Since the player is able to move unrestricted on the canvas unlike the traditional game the centipede should be able to 
 move back to the top of the canvas once it reaches the bottom.
 * Upon reaching levels past 120, Player bullets and the Centipede suffer issues such as the centipede moves so fast the gaps between its segments are massive,
-rare occassions it may even fly off the map, the players bullets hit boxes operate in a weird fashion requiring to be at a certain range in 
-order to hit anything also seems that the bullets do not travel very far at all.
+rare occassions it may even fly off the map, 
 * Optimizations to performance especially on higher levels.
 * Recoding of the Splay power up the splay power up at times has inconsistent behaviors
 * Increase the size of the canvas, option for fullscreen gameplay
 * Refactoring of ui
-* Adding Sound effects
 * Added the ability to pause the game.
 * A way to record and keep highscores.
