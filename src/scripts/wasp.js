@@ -4,7 +4,7 @@ import Util from "./utils";
 
 
 class Wasp extends MovingObject {
-    constructor(options) {
+    constructor (options) {
         super(
             {
                 pos: options.pos,
@@ -23,8 +23,8 @@ class Wasp extends MovingObject {
         this.acceleration = options.acceleration;
     }
 
-   
-    move() {
+
+    move () {
         let newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
         let splitSize;
 
@@ -79,7 +79,7 @@ class Wasp extends MovingObject {
 
     }
 
-    hitByZapper() {
+    hitByZapper () {
         //wasp speed doubles if it is shot
         this.game.addSparks(
             {
@@ -90,11 +90,14 @@ class Wasp extends MovingObject {
         );
         if (this.health === 0) {
             this.game.removeEntity(this);
+            this.game.sfx.wasp();
+            this.game.sfx.killSpider();
+
             this.game.incrementScore(500);
         }
-       
+
         else if (this.health === 2) {
-           
+
             this.acceleration = this.acceleration * 15;
             this.vel[0] *= 1.25;
             this.vel[1] *= 1.25;
@@ -110,14 +113,14 @@ class Wasp extends MovingObject {
 
 
 
-    moveUp() {
+    moveUp () {
 
         this.vel[1] = -Math.abs(this.vel[0]);
         this.vel[0] = 0;
 
     }
 
-    moveDown() {
+    moveDown () {
 
         let nearestPos = Util.centipedeNearestPos(this.pos);
         this.nextRow = nearestPos[1] + (this.radius * 2);
@@ -129,20 +132,20 @@ class Wasp extends MovingObject {
     }
 
 
-    hitSideWall(newPos) {
+    hitSideWall (newPos) {
 
         return (newPos[0] < 12 && newPos[1] !== 48) || newPos[0] > Util.centipedeRightMostPos();
 
     }
 
 
-    hitBottomOfCanvas(newPos) {
+    hitBottomOfCanvas (newPos) {
 
 
         return this.hitSideWall(newPos) && this.pos[1] === Util.centipedeLowestCorner();
     }
 
-    hitTopOfCanvas(newPos) {
+    hitTopOfCanvas (newPos) {
 
 
         return newPos[1] < 36 && this.vel[1] < 0;
@@ -150,26 +153,26 @@ class Wasp extends MovingObject {
 
     }
 
-    reachedNextRow(newPos) {
+    reachedNextRow (newPos) {
 
 
         return this.nextRow && newPos[1] > this.nextRow;
     }
 
-    moveToNextRow() {
+    moveToNextRow () {
 
 
         this.pos = Util.centipedeNearestPos(this.pos);
     }
 
-    draw(ctx) {
+    draw (ctx) {
         this.drawEllipseByCenter(ctx, this.pos[0], this.pos[1], 16, 13);
     }
 
 
 
 
-    drawEllipseByCenter(ctx, cx, cy, w, h) {
+    drawEllipseByCenter (ctx, cx, cy, w, h) {
         this.drawEllipse(ctx, cx - w / 2.0, cy - h / 2.0, w + 2, h);
         this.drawEllipse(ctx, cx - 4 - w / 2.0, cy - 3 - h / 2.0, w + 3, h - 4);
         this.drawEllipse(ctx, cx - 3 - w / 2.0, cy - h / 2.0, w - 1, h - 6);
@@ -300,7 +303,7 @@ class Wasp extends MovingObject {
 
 
 
-    drawEllipse(ctx, x, y, w, h) {
+    drawEllipse (ctx, x, y, w, h) {
 
         ctx.fillStyle = Util.randomColors();
 
