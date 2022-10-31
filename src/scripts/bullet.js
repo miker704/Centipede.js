@@ -12,7 +12,7 @@ import LightningWasp from "./lightning_Wasp.js";
 import SplayArray from "./splayArray.js";
 
 class Bullet extends MovingObject {
-    constructor(options) {
+    constructor (options) {
 
 
         super({
@@ -45,7 +45,7 @@ class Bullet extends MovingObject {
     }
 
 
-    callFrag(entity) {
+    callFrag (entity) {
 
 
         this.pos[0] = this.pos[0]
@@ -82,17 +82,16 @@ class Bullet extends MovingObject {
         this.splayShotDelete = true;
         this.stuckWithSplay = false;
 
-        // this.splayable = false;
-        // if (this.game.outOfBounds(this)) {
-        // this.game.removeEntity(this);
-        // }
+        this.game.sfx.detonate();
+        this.game.sfx.fire();
+
     }
 
 
 
 
     //check if the bullet collides with some destroyable entity
-    collisonDetection(entity) {
+    collisonDetection (entity) {
 
         if (this.game.zapper.hasSplayShot === true &&
             this.splayable === true &&
@@ -127,15 +126,18 @@ class Bullet extends MovingObject {
                     // object splaying again till it leaves the map
 
 
-                    
+                    // this.game.sfx.splayPhase();
                     if (this.splayChoice === 2) {
+                        this.game.sfx.splayPhase();
+
                         // console.log("splaychoice: ", this.splayChoice);
                         setTimeout(() => {
                             // this.pos[0] = entity.pos[0]
                             // this.pos[1] = entity.pos[1]
                             this.callFrag(entity);
+                            // this.game.sfx.splayPhase();
                         }, 1000)
-                        
+
 
                     }
 
@@ -143,12 +145,17 @@ class Bullet extends MovingObject {
 
                         // console.log("splaychoice: ", this.splayChoice);
 
+                        this.game.sfx.splayShot();
                         setTimeout(() => {
+
                             this.pos[0] = entity.pos[0]
                             this.pos[1] = entity.pos[1]
+                            this.game.sfx.stick();
                             this.callFrag(entity);
+                            this.game.sfx.splayBurst();
                         }, 1000)
 
+                        this.game.sfx.splayScatter();
                         this.pos[0] = entity.pos[0]
                         this.pos[1] = entity.pos[1]
 
@@ -167,7 +174,7 @@ class Bullet extends MovingObject {
 
                 }
                 this.stuckWithSplay = false;
-               
+
 
                 // entity.hitByZapper(); // call to remove entity
                 // this.game.removeEntity(this);
@@ -188,7 +195,7 @@ class Bullet extends MovingObject {
                 entity instanceof JumpingSpider ||
                 entity instanceof LightningWasp
             ) {
-        
+
 
                 entity.hitByZapper(); // call to remove entity
                 this.game.removeEntity(this); // remove the bullet from the game 
