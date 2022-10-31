@@ -111,7 +111,7 @@ class Mushrooms extends MovingObject {
 
 
             this.game.removeEntity(this);
-
+            this.game.sfx.killMushroom();
             if (this.poisoned === true) {
                 this.game.incrementScore(100);
             }
@@ -123,6 +123,7 @@ class Mushrooms extends MovingObject {
         }
         else {
             this.health--;
+            this.game.sfx.hitMushroom();
         }
         this.color = Util.randomColors();
     }
