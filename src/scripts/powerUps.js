@@ -9,7 +9,7 @@ import Util from "./utils.js";
 
 class PowerUps extends MovingObject {
 
-    constructor(options) {
+    constructor (options) {
 
         super(
             {
@@ -52,7 +52,7 @@ class PowerUps extends MovingObject {
 
     }
 
-    activatePowerup(typeOfPowerUp, powerUpName) {
+    activatePowerup (typeOfPowerUp, powerUpName) {
         // console.log("power up activation called");
         switch (typeOfPowerUp) {
 
@@ -97,7 +97,7 @@ class PowerUps extends MovingObject {
 
     }
 
-    applyWeaponPowerUp(powerUpName) {
+    applyWeaponPowerUp (powerUpName) {
 
         // this.powerUpAttributes = {
         //     'FasterFireRate':["speed","fireRate"],
@@ -112,25 +112,34 @@ class PowerUps extends MovingObject {
         //     'Barrell':[1]
         // }
 
-        if(powerUpName === 'Splay'){
+        if (powerUpName === 'Splay') {
             this.game.unlockSplay();
         }
 
         let effects = Object.values(this.powerUpEffects[powerUpName]);
         let attributes = Object.values(this.powerUpAttributes[powerUpName]);
-     
 
-        for (let i = 0; i < attributes.length; i++){
+
+        for (let i = 0; i < attributes.length; i++) {
             // console.log("pairs",attributes[i],effects[i]);
+            this.game.zapper.zapperBarrell[attributes[i]] += effects[i];
+            if (this.game.zapper.zapperBarrell.fireRate >= 500) {
+                this.game.zapper.zapperBarrell.fireRate = 300;
 
-            this.game.zapper.zapperBarrell[attributes[i]]+=effects[i];
+            }
+            else if (this.game.zapper.zapperBarrell.speed >= 100) {
+                this.game.zapper.zapperBarrell.speed = 50;
+            }
+
             // console.log("zapperbarrel props : ", this.game.zapper.zapperBarrell )
 
-            if(attributes[i] === 'number'){
-                setTimeout(function(){
-                    this.game.zapper.zapperBarrell[attributes[i]]-=effects[i];
+            if (attributes[i] === 'number') {
+                setTimeout(function () {
+                    this.game.zapper.zapperBarrell[attributes[i]] -= effects[i];
                     // console.log("removed power")
-                }.bind(this),20000)
+
+                }.bind(this), 20000)
+                this.game.sfx.powerDown();
             }
 
 
@@ -141,18 +150,18 @@ class PowerUps extends MovingObject {
 
 
 
-    move() {
+    move () {
         this.bounciness();
         super.move();
         this.hasCollisonOccured(this.game.zapper);
 
     }
 
-    collisonDetection(entity) {
+    collisonDetection (entity) {
 
         if (entity instanceof BugZapper) {
             // console.log("collison with powerup")
-
+            this.game.sfx.powerUp();
             if (this.typeOfPowerUp === 'gameEffect') {
                 // console.log("hello")
                 this.activatePowerup(this.typeOfPowerUp, this.powerUpName);
