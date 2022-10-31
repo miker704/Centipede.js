@@ -106,6 +106,7 @@ class Spider extends MovingObject {
 
 
         this.game.removeEntity(this);
+        this.game.sfx.killSpider();
         this.game.incrementScore(rangeScore);
 
     }
