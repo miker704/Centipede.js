@@ -125,6 +125,8 @@ class JumpingSpider extends MovingObject {
         if (this.health === 0 && this.armor === 0) {
 
             this.game.removeEntity(this);
+            this.game.sfx.jumpSpider();
+            this.game.sfx.killSpider();
             this.game.incrementScore(rangeScore);
         }
 
