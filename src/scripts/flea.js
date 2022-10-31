@@ -59,6 +59,7 @@ class Flea extends MovingObject {
         );
         if (this.health === 0) {
             this.game.removeEntity(this);
+            this.game.sfx.killFlea();
             this.game.incrementScore(200);
         }
         else if (this.health === 1) {
